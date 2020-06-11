@@ -20,19 +20,13 @@ public class CameraController : MonoBehaviour
             inspectController.enabled = false;
             gyroController.enabled = true;
 
-            Debug.Log("Saved Rotation to Set= " + savedCameraRotation);
-            Debug.Log("Saved Position to Set= " + savedCameraPosition);
             gameObject.transform.position = savedCameraPosition;
             gameObject.transform.rotation = savedCameraRotation;
-            Debug.Log("Set Position=" + gameObject.transform.position);
-            Debug.Log("Set Rotation=" + gameObject.transform.rotation);
         }
         else if (newGameState == GameState.InspectObject)
         {
             savedCameraRotation = gameObject.transform.rotation;
             savedCameraPosition = gameObject.transform.position;
-            Debug.Log("Saved Rotation= " + savedCameraRotation);
-            Debug.Log("Saved Position= " + savedCameraPosition);
 
             inspectController.target = GameManager.Instance.Target.transform;
             inspectController.enabled = true;
