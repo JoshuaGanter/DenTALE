@@ -38,6 +38,19 @@ public class CameraMove : MonoBehaviour
         transform.rotation = rotation;
         transform.position = position;
     }
+
+    void OnEnable ()
+    {
+        var angles = transform.eulerAngles;
+        x = angles.y;
+        y = angles.x;
+    
+        rotation = Quaternion.Euler(y, x, 0);
+        negDistance = new Vector3(0.0f, 0.0f, -targetDistance);
+        position = rotation * negDistance + target.position;
+        transform.rotation = rotation;
+        transform.position = position;
+    }
     
     void LateUpdate () 
     {

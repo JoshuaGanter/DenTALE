@@ -10,15 +10,24 @@ public class CameraController : MonoBehaviour
     private CameraMove inspectController;
     private GyroOrientation gyroController;
 
+    private Quaternion savedCameraRotation;
+    private Vector3 savedCameraPosition;
+
     void OnGameStateChange(GameState newGameState)
     {
         if (newGameState == GameState.LookAround)
         {
             inspectController.enabled = false;
             gyroController.enabled = true;
+
+            gameObject.transform.position = savedCameraPosition;
+            gameObject.transform.rotation = savedCameraRotation;
         }
         else if (newGameState == GameState.InspectObject)
         {
+            savedCameraRotation = gameObject.transform.rotation;
+            savedCameraPosition = gameObject.transform.position;
+
             inspectController.target = GameManager.Instance.Target.transform;
             inspectController.enabled = true;
             gyroController.enabled = false;
