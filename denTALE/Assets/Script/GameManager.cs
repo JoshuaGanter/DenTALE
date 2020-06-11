@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public event GameStateChange OnGameStateChange;
 
     public GameObject Target { get; private set; }
-
+    private Animator AnimatorObj;
     public static GameManager Instance
     {
         get { return instance; }
@@ -40,8 +40,20 @@ public class GameManager : MonoBehaviour
         }
         else if (gameObj.tag == "Artifact" && currentGameState == GameState.InspectObject)
         {
-            // ToDo: Play Animation
-            //gameObj.GetComponent<Animator>().enabled = true;
+
+            AnimatorObj = gameObj.GetComponentInChildren<Animator>();
+            AnimatorObj.enabled = true;
+            
+            if (AnimatorObj.GetBool("Auf") == false)
+            {
+                AnimatorObj.SetBool("Auf", true);
+
+            }
+
+            else if (AnimatorObj.GetBool("Auf") == true)
+            {
+                AnimatorObj.SetBool("Auf", false);
+            }
         }
     }
 
