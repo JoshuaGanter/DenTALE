@@ -22,7 +22,7 @@ public class CameraMove : MonoBehaviour
 
     private float lastTouchDistance;
     
-    int xsign =1;
+    int xsign = 1;
     
     [AddComponentMenu("Camera-Control/Mouse Orbit with zoom")]
     
@@ -89,11 +89,11 @@ public class CameraMove : MonoBehaviour
             touch1Pos = touch1.position;
             distance = Vector2.Distance(touch0Pos, touch1Pos);
 
-            if(touch0.phase == TouchPhase.Began && touch1.phase == TouchPhase.Began)
+            if (touch0.phase == TouchPhase.Began || touch1.phase == TouchPhase.Began)
             {
                 lastTouchDistance = distance;
             }
-            else if (touch0.phase == TouchPhase.Moved && touch1.phase == TouchPhase.Moved)
+            else if (touch0.phase == TouchPhase.Moved || touch1.phase == TouchPhase.Moved)
             {
                 var delta = distance - lastTouchDistance;
                 if(delta > 0)
@@ -101,6 +101,7 @@ public class CameraMove : MonoBehaviour
                     if(targetDistance > minDistance)
                     {
                         setZoom(delta);
+                        lastTouchDistance = distance;
                     } 
                     else if (targetDistance <= minDistance)
                     {
@@ -112,6 +113,7 @@ public class CameraMove : MonoBehaviour
                     if(targetDistance < maxDistance)
                     {
                         setZoom(delta);
+                        lastTouchDistance = distance;
                     }
                     else if (targetDistance >= maxDistance)
                     {

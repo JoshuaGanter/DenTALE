@@ -36,6 +36,12 @@ public class GameManager : MonoBehaviour
         if (gameObj.tag == "Artifact" && currentGameState == GameState.LookAround)
         {
             Target = gameObj;
+            var sceneObjects = GameObject.FindGameObjectsWithTag("Scene");
+            foreach( var sceneObject in sceneObjects)
+            {
+                sceneObject.GetComponent<Renderer>().enabled = false;
+            }
+
             setCurrentGameState(GameState.InspectObject);
         }
         else if (gameObj.tag == "Artifact" && currentGameState == GameState.InspectObject)
@@ -88,6 +94,11 @@ public class GameManager : MonoBehaviour
             if (GUI.Button(new Rect(10, 10, 150, 100), "Back"))
             {
                 setCurrentGameState(GameState.LookAround);
+                var sceneObjects = GameObject.FindGameObjectsWithTag("Scene");
+                foreach( var sceneObject in sceneObjects)
+                {
+                    sceneObject.GetComponent<Renderer>().enabled = true;
+                }
                 Target = null;
             }
         }
