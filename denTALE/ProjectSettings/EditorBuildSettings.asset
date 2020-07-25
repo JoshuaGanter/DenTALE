@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 0
+    path: Assets/Scenes/Tempel.unity
+    guid: d22dcd637498dc849bb2147f02510dd0
+  - enabled: 1
+    path: Assets/Scenes/Praxis.unity
+    guid: 11f02dfe9fa9a2c48b5c2eb4d31cb741
   m_configObjects: {}
