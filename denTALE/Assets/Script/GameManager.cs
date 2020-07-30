@@ -1,6 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public enum GameScene {
+    Praxis = 0,
+    Archiv = 1
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     public delegate void GameStateChange(GameState newState);
     public event GameStateChange OnGameStateChange;
+    public Animator transition;
+    public float transitionDuration = 1f;
 
     public GameObject Target { get; private set; }
     private Animator AnimatorObj;
@@ -35,14 +43,11 @@ public class GameManager : MonoBehaviour
     {
         if (gameObj.tag == "Artifact" && currentGameState == GameState.LookAround)
         {
-            Target = gameObj;
-            var sceneObjects = GameObject.FindGameObjectsWithTag("Scene");
-            foreach( var sceneObject in sceneObjects)
+            Artifact artifact = gameObj.GetComponent<Artifact>();
+            if (artifact.isCursed)
             {
-                sceneObject.GetComponent<Renderer>().enabled = false;
+                StartCoroutine(SwitchScenes((int) artifact.toScene));
             }
-
-            setCurrentGameState(GameState.InspectObject);
         }
         else if (gameObj.tag == "Artifact" && currentGameState == GameState.InspectObject)
         {
@@ -102,6 +107,15 @@ public class GameManager : MonoBehaviour
                 Target = null;
             }
         }
+    }
+
+    IEnumerator SwitchScenes(int toSceneIndex)
+    {
+        transition.SetTrigger("Start");
+        
+        yield return new WaitForSeconds(transitionDuration);
+        SceneManager.LoadScene(toSceneIndex);
+        transition.SetTrigger("Reset");
     }
 }
 
