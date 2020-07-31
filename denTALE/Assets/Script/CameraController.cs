@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
 
     void OnGameStateChange(GameState newGameState)
     {
-        if (newGameState == GameState.LookAround)
+        if (newGameState == GameState.Adventure)
         {
             inspectController.enabled = false;
             gyroController.enabled = true;
@@ -23,18 +23,17 @@ public class CameraController : MonoBehaviour
             gameObject.transform.position = savedCameraPosition;
             gameObject.transform.rotation = savedCameraRotation;
         }
-        else if (newGameState == GameState.InspectObject)
+        else if (newGameState == GameState.Inspect)
         {
             savedCameraRotation = gameObject.transform.rotation;
             savedCameraPosition = gameObject.transform.position;
 
-            inspectController.target = GameManager.Instance.Target.transform;
+            
             inspectController.enabled = true;
             gyroController.enabled = false;
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         inspectController = gameObject.GetComponent<CameraMove>();
@@ -43,7 +42,6 @@ public class CameraController : MonoBehaviour
         GameManager.Instance.OnGameStateChange += OnGameStateChange;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && OnGameObjectClicked != null)
