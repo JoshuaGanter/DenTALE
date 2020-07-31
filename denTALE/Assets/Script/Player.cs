@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public Joystick _joystick;
-    public float _moveSpeed;
+    public Joystick Joystick;
+    public float MoveSpeed;
+    public Inventory Inventory;
     private Transform _cameraTransform;
     private Rigidbody _rigidbody;
 
@@ -20,8 +21,8 @@ public class Player : MonoBehaviour
         Vector3 forward = new Vector3(_cameraTransform.forward.x, 0, _cameraTransform.forward.z);
         forward.Normalize();
         Vector3 right = Vector3.Cross(forward, new Vector3(0, 1, 0));
-        forward *= _joystick.Vertical * _moveSpeed;
-        right *= _joystick.Horizontal * _moveSpeed;
+        forward *= Joystick.Vertical * MoveSpeed;
+        right *= Joystick.Horizontal * MoveSpeed;
         _rigidbody.velocity = forward - right;
     }
 }

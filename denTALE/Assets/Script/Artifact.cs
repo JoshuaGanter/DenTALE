@@ -6,4 +6,5 @@ public class Artifact : MonoBehaviour
 {
     public bool isCursed = true;
     public GameScene toScene = GameScene.Archiv;
+    public Item Item;
 }
