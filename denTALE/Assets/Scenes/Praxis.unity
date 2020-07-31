@@ -52,7 +52,7 @@ LightmapSettings:
     m_AlbedoBoost: 1
     m_EnvironmentLightingMode: 1
     m_EnableBakedLightmaps: 1
-    m_EnableRealtimeLightmaps: 1
+    m_EnableRealtimeLightmaps: 0
   m_LightmapEditorSettings:
     serializedVersion: 12
     m_Resolution: 2
@@ -317,6 +317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2df8bf250373dc04dba2317a4a770cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 0}
+  transitionDuration: 1
 --- !u!4 &161973734
 Transform:
   m_ObjectHideFlags: 0
@@ -559,6 +561,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bild05
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 5973a5ea552998b43a7001cd9d4444f1,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5973a5ea552998b43a7001cd9d4444f1, type: 3}
 --- !u!4 &369879006 stripped
@@ -672,7 +679,7 @@ PrefabInstance:
     - target: {fileID: -1233657081076909810, guid: d64245b803ba6fe42a1eff91636182b4,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: d64245b803ba6fe42a1eff91636182b4,
         type: 3}
@@ -1401,6 +1408,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bild01
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f969c7b7b4dc1ee478dd26f7032fcb68,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f969c7b7b4dc1ee478dd26f7032fcb68, type: 3}
 --- !u!4 &682503078 stripped
@@ -1515,98 +1527,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 733984781}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &756973688
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 756973690}
-  - component: {fileID: 756973689}
-  m_Layer: 0
-  m_Name: Directional Light
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!108 &756973689
-Light:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756973688}
-  m_Enabled: 1
-  serializedVersion: 10
-  m_Type: 1
-  m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.72
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
-  m_Shadows:
-    m_Type: 0
-    m_Resolution: -1
-    m_CustomResolution: -1
-    m_Strength: 1
-    m_Bias: 0.05
-    m_NormalBias: 0.4
-    m_NearPlane: 0.2
-    m_CullingMatrixOverride:
-      e00: 1
-      e01: 0
-      e02: 0
-      e03: 0
-      e10: 0
-      e11: 1
-      e12: 0
-      e13: 0
-      e20: 0
-      e21: 0
-      e22: 1
-      e23: 0
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 1
-    m_UseCullingMatrixOverride: 0
-  m_Cookie: {fileID: 0}
-  m_DrawHalo: 0
-  m_Flare: {fileID: 0}
-  m_RenderMode: 0
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingLayerMask: 1
-  m_Lightmapping: 4
-  m_LightShadowCasterMode: 0
-  m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
-  m_ColorTemperature: 6570
-  m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
-  m_UseBoundingSphereOverride: 0
-  m_ShadowRadius: 0
-  m_ShadowAngle: 0
---- !u!4 &756973690
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756973688}
-  m_LocalRotation: {x: -0.89121026, y: -0.32855627, z: 0.2919785, w: -0.11199864}
-  m_LocalPosition: {x: 3.0061169, y: 10.266786, z: -9.044748}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 156.953, y: 29.050995, z: 325.574}
 --- !u!4 &790889581 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 83473c1922574bb4285b716bdbc9b018,
@@ -2617,6 +2537,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bild03
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2be132db9d6d0b740903b00a8999131e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2be132db9d6d0b740903b00a8999131e, type: 3}
 --- !u!4 &1173811033 stripped
@@ -3074,6 +2999,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bild04
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7c1e060b2c8588848b6137a242187404,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c1e060b2c8588848b6137a242187404, type: 3}
 --- !u!4 &1393354668 stripped
@@ -3496,7 +3426,7 @@ Transform:
   - {fileID: 474778674}
   - {fileID: 1190444377}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1640836133
 PrefabInstance:
@@ -3618,7 +3548,7 @@ PrefabInstance:
     - target: {fileID: -3307063168842625116, guid: c8880c596bf8ce44c9d325af83ba6f6e,
         type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 0
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -3088431507015986545, guid: c8880c596bf8ce44c9d325af83ba6f6e,
         type: 3}
@@ -4137,7 +4067,7 @@ Transform:
   - {fileID: 322927995}
   - {fileID: 241702984}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2095853378
 PrefabInstance:
