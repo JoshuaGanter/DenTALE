@@ -8,6 +8,9 @@ public enum GameScene {
     Archiv = 1
 }
 
+public delegate void AddItemToInventory(Item item);
+public delegate void RemoveItemFromInventory(Item item);
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
@@ -16,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     public delegate void GameStateChange(GameState newState);
     public event GameStateChange OnGameStateChange;
+    public event AddItemToInventory OnAddItemToInventory;
+    public event RemoveItemFromInventory OnRemoveItemFromInventory;
     public Animator transition;
     public float transitionDuration = 1f;
 
@@ -51,6 +56,10 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+                if (OnAddItemToInventory != null)
+                {
+                    OnAddItemToInventory(artifact.Item);
+                }
                 _player.Inventory.AddItem(artifact.Item);
                 Destroy(gameObj);
             }
@@ -127,7 +136,16 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            Debug.Log("tab key down");
+            setCurrentGameState(GameState.Inventory);
+        }
+        else if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            Debug.Log("tab key up");
+            setCurrentGameState(GameState.Adventure);
+        }
     }
 
     void OnGUI()
