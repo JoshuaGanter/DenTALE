@@ -46,6 +46,7 @@ public class DisplayInventory : MonoBehaviour
         GameObject inventorySlot = Instantiate<GameObject>(InventorySlotPrefab, Vector3.zero, Quaternion.identity, transform);
         inventorySlot.GetComponent<RectTransform>().localPosition = GetPosition(_inventorySlots.Count, _currentScrollPosition);
         inventorySlot.GetComponent<Image>().sprite = item.icon;
+        inventorySlot.GetComponent<Image>().color = Color.green;
         _inventorySlots.Add(item.title, inventorySlot);
     }
 

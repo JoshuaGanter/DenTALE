@@ -8,7 +8,7 @@ public class Item : ScriptableObject
     public GameObject prefab;
     public Sprite icon;
     public Item[] consistsOf;
-    public string title;
+    public string title = "";
     [TextArea(15, 20)]
     public string description;
 
