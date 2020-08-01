@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void OnShakeStart();
+public delegate void OnShakeEnd();
+
 public class AccelerationManager : MonoBehaviour
 {
     public float shakeThreshold;
     public float shakeDegradation;
+    public static event OnShakeStart ShakeStarted;
+    public static event OnShakeEnd ShakeEnded;
 
     private float degradingShakeThreshold;
     private float currentShakeLevel;
@@ -33,13 +38,19 @@ public class AccelerationManager : MonoBehaviour
         if (!isShaking && currentShakeLevel > shakeThreshold)
         {
             isShaking = true;
-            // trigger event shakestart
+            if (ShakeStarted != null)
+            {
+                ShakeStarted();
+            }
         }
 
         if (isShaking && currentShakeLevel < degradingShakeThreshold)
         {
             isShaking = false;
-            // trigger event shakeend
+            if (ShakeEnded != null)
+            {
+                ShakeEnded();
+            }
         }
     }
 

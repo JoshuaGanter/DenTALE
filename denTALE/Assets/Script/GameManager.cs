@@ -11,14 +11,15 @@ public enum GameScene {
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
-    private GameState currentGameState = GameState.Default;
+    private Player _player;
+    private GameState currentGameState = GameState.Paused;
 
     public delegate void GameStateChange(GameState newState);
     public event GameStateChange OnGameStateChange;
     public Animator transition;
     public float transitionDuration = 1f;
 
-    public GameObject Target { get; private set; }
+    public Item Target { get; private set; }
     private Animator AnimatorObj;
     public static GameManager Instance
     {
@@ -41,15 +42,20 @@ public class GameManager : MonoBehaviour
 
     void OnGameObjectClicked(GameObject gameObj)
     {
-        if (gameObj.tag == "Artifact" && currentGameState == GameState.LookAround)
+        if (gameObj.tag == "Artifact" && currentGameState == GameState.Adventure)
         {
             Artifact artifact = gameObj.GetComponent<Artifact>();
             if (artifact.isCursed)
             {
                 StartCoroutine(SwitchScenes((int) artifact.toScene));
             }
+            else
+            {
+                _player.Inventory.AddItem(artifact.Item);
+                Destroy(gameObj);
+            }
         }
-        else if (gameObj.tag == "Artifact" && currentGameState == GameState.InspectObject)
+        else if (gameObj.tag == "Artifact" && currentGameState == GameState.Inspect)
         {
 
             AnimatorObj = gameObj.GetComponentInChildren<Animator>();
@@ -68,6 +74,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void OnShakeStarted()
+    {
+
+    }
+
+    void OnShakeEnded()
+    {
+        // TODO: play breaking sound
+
+        if (currentGameState == GameState.Inspect && Target.consistsOf.Length != 0)
+        {
+            _player.Inventory.RemoveItem(Target);
+            _player.Inventory.AddItems(Target.consistsOf);
+            // TODO: play some kind of animation
+        }
+    }
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -77,14 +100,29 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        Dictionary<Item[], Item> recipes = new Dictionary<Item[], Item>();
+        foreach (Item item in Resources.LoadAll<Item>("Items"))
+        {
+            if (item.consistsOf.Length > 0)
+            {
+                List<Item> components = new List<Item>(item.consistsOf);
+                components.Sort((x, y) => string.Compare(x.title, y.title));
+                recipes.Add(components.ToArray(), item);
+            }
+        }
     }
 
     void Start()
     {
         // Subscribe to events:
         CameraController.OnGameObjectClicked += OnGameObjectClicked;
+        AccelerationManager.ShakeStarted += OnShakeStarted;
+        AccelerationManager.ShakeEnded += OnShakeEnded;
         
-        setCurrentGameState(GameState.LookAround);
+        setCurrentGameState(GameState.Adventure);
+
+        _player = GetComponentInChildren<Player>();
     }
 
     void Update()
@@ -94,11 +132,11 @@ public class GameManager : MonoBehaviour
 
     void OnGUI()
     {
-        if (currentGameState == GameState.InspectObject)
+        if (currentGameState == GameState.Inspect)
         {
             if (GUI.Button(new Rect(10, 10, 150, 100), "Back"))
             {
-                setCurrentGameState(GameState.LookAround);
+                setCurrentGameState(GameState.Adventure);
                 var sceneObjects = GameObject.FindGameObjectsWithTag("Scene");
                 foreach( var sceneObject in sceneObjects)
                 {
@@ -107,6 +145,7 @@ public class GameManager : MonoBehaviour
                 Target = null;
             }
         }
+        GUI.Label(new Rect(10, 120, 150, 100), "Items in inventory: " + _player.Inventory.Count);
     }
 
     IEnumerator SwitchScenes(int toSceneIndex)
@@ -121,7 +160,8 @@ public class GameManager : MonoBehaviour
 
 public enum GameState
 {
-    Default,
-    LookAround,
-    InspectObject
+    Paused,
+    Adventure,
+    Inventory,
+    Inspect
 }
