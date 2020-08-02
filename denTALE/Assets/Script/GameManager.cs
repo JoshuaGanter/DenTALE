@@ -45,6 +45,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnInventoryOpened(bool isOpen)
+    {
+        if (isOpen)
+        {
+            setCurrentGameState(GameState.Inventory);
+        }
+        else
+        {
+            setCurrentGameState(GameState.Adventure);
+        }
+    }
+
+    private void OnItemClicked(Item item)
+    {
+        Target = item;
+        setCurrentGameState(GameState.Inspect);
+
+        GameObject prev = Instantiate(item.prefab, Vector3.zero/*Camera.main.transform.position + (Camera.main.transform.forward.normalized * 4) + (Camera.main.transform.right.normalized * 2)*/, Quaternion.identity);
+        prev.transform.parent = Camera.main.transform;
+        prev.transform.localPosition = new Vector3(1.5f, 1.0f, 6.0f);
+        prev.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+    }
+
     void OnGameObjectClicked(GameObject gameObj)
     {
         if (gameObj.tag == "Artifact" && currentGameState == GameState.Adventure)
@@ -64,7 +87,7 @@ public class GameManager : MonoBehaviour
                 Destroy(gameObj);
             }
         }
-        else if (gameObj.tag == "Artifact" && currentGameState == GameState.Inspect)
+        /*else if (gameObj.tag == "Artifact" && currentGameState == GameState.Inspect)
         {
 
             AnimatorObj = gameObj.GetComponentInChildren<Animator>();
@@ -80,7 +103,7 @@ public class GameManager : MonoBehaviour
             {
                 AnimatorObj.SetBool("Auf", false);
             }
-        }
+        }*/
         else if (gameObj.tag == "InteractableObject")
         {
             gameObj.GetComponent<Interactable>()?.InteractWith();
@@ -132,29 +155,17 @@ public class GameManager : MonoBehaviour
         CameraController.OnGameObjectClicked += OnGameObjectClicked;
         AccelerationManager.ShakeStarted += OnShakeStarted;
         AccelerationManager.ShakeEnded += OnShakeEnded;
+        DisplayInventory.OnInventoryOpened += OnInventoryOpened;
+        ItemSlot.OnItemClicked += OnItemClicked;
         
         setCurrentGameState(GameState.Adventure);
 
         _player = GetComponentInChildren<Player>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            Debug.Log("tab key down");
-            setCurrentGameState(GameState.Inventory);
-        }
-        else if (Input.GetKeyUp(KeyCode.Tab))
-        {
-            Debug.Log("tab key up");
-            setCurrentGameState(GameState.Adventure);
-        }
-    }
-
     void OnGUI()
     {
-        if (currentGameState == GameState.Inspect)
+        /*if (currentGameState == GameState.Inspect)
         {
             if (GUI.Button(new Rect(10, 10, 150, 100), "Back"))
             {
@@ -166,8 +177,8 @@ public class GameManager : MonoBehaviour
                 }
                 Target = null;
             }
-        }
-        GUI.Label(new Rect(10, 120, 150, 100), "Items in inventory: " + _player.Inventory.Count);
+        }*/
+        GUI.Label(new Rect(500, 10, 150, 100), "Game State: " + currentGameState.ToString());
     }
 
     IEnumerator SwitchScenes(int toSceneIndex)

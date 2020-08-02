@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
             savedCameraPosition = gameObject.transform.position;
 
             
-            inspectController.enabled = true;
+            //inspectController.enabled = true;
             gyroController.enabled = false;
         }
     }
@@ -38,6 +38,8 @@ public class CameraController : MonoBehaviour
     {
         inspectController = gameObject.GetComponent<CameraMove>();
         gyroController = gameObject.GetComponent<GyroOrientation>();
+        savedCameraRotation = gameObject.transform.rotation;
+        savedCameraPosition = gameObject.transform.position;
 
         GameManager.Instance.OnGameStateChange += OnGameStateChange;
     }

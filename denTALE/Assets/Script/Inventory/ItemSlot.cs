@@ -4,35 +4,58 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public delegate void ItemClicked(Item item);
+
+public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    public static event ItemClicked OnItemClicked;
     public Item Item;
-    private Vector3 _startPosition;
-    private Vector2 _clickOffset;
+    public Canvas Canvas;
+    private Vector2 _startPosition;
+    private RectTransform _rectTransform;
+
+    public void Awake()
+    {
+        _rectTransform = GetComponent<RectTransform>();
+    }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = eventData.position - _clickOffset;
+        _rectTransform.anchoredPosition += eventData.delta / Canvas.scaleFactor;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        _startPosition = transform.position;
-        _clickOffset = eventData.position - new Vector2(_startPosition.x, _startPosition.y);
+        _startPosition = _rectTransform.anchoredPosition;
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Ray ray = Camera.main.ScreenPointToRay(eventData.position);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (GameManager.Instance.CurrentGameState == GameState.Inventory)
         {
-            GameObject gameObject = hit.transform.gameObject;
-            if (gameObject.tag == "InteractableObject")
+            Ray ray = Camera.main.ScreenPointToRay(eventData.position);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit))
             {
-                gameObject.GetComponent<Interactable>()?.InteractWith(Item);
+                GameObject gameObject = hit.transform.gameObject;
+                if (gameObject.tag == "InteractableObject")
+                {
+                    gameObject.GetComponent<Interactable>()?.InteractWith(Item);
+                }
             }
         }
-        transform.position = _startPosition;
+        else if (GameManager.Instance.CurrentGameState == GameState.Inspect)
+        {
+            // TODO: Add item to craft blubdiedub
+        }
+        _rectTransform.anchoredPosition = _startPosition;
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (!eventData.dragging && OnItemClicked != null)
+        {
+            OnItemClicked(Item);
+        } 
     }
 }
