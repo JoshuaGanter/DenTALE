@@ -418,6 +418,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 883886fed05e08840ba3e55fc49612e8,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: -323710363460028086, guid: 883886fed05e08840ba3e55fc49612e8,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -5186,10 +5191,10 @@ Transform:
   - {fileID: 2138637453}
   - {fileID: 1094607465}
   - {fileID: 1507062244}
-  - {fileID: 322927995}
-  - {fileID: 22389308}
   - {fileID: 1270620406}
+  - {fileID: 322927995}
   - {fileID: 1689468187}
+  - {fileID: 22389308}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -47,6 +47,7 @@ public class DisplayInventory : MonoBehaviour
         inventorySlot.GetComponent<RectTransform>().localPosition = GetPosition(_inventorySlots.Count, _currentScrollPosition);
         inventorySlot.GetComponent<Image>().sprite = item.icon;
         inventorySlot.GetComponent<Image>().color = Color.green;
+        inventorySlot.GetComponent<ItemSlot>().Item = item;
         _inventorySlots.Add(item.title, inventorySlot);
     }
 

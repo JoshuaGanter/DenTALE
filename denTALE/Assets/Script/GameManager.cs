@@ -81,6 +81,10 @@ public class GameManager : MonoBehaviour
                 AnimatorObj.SetBool("Auf", false);
             }
         }
+        else if (gameObj.tag == "InteractableObject")
+        {
+            gameObj.GetComponent<Interactable>()?.InteractWith();
+        }
     }
 
     void OnShakeStarted()

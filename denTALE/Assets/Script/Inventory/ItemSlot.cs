@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
+    public Item Item;
     private Vector3 _startPosition;
     private Vector2 _clickOffset;
 
@@ -22,7 +23,16 @@ public class ItemSlot : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDrag
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        // TODO: Raycast at eventData.position
+        Ray ray = Camera.main.ScreenPointToRay(eventData.position);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit))
+        {
+            GameObject gameObject = hit.transform.gameObject;
+            if (gameObject.tag == "InteractableObject")
+            {
+                gameObject.GetComponent<Interactable>()?.InteractWith(Item);
+            }
+        }
         transform.position = _startPosition;
     }
 }
