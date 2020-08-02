@@ -29,4 +29,9 @@ public class Inventory : ScriptableObject
     {
         _container.Remove(item);
     }
+
+    public IEnumerator GetEnumerator()
+    {
+        return _container.GetEnumerator();
+    }
 }
