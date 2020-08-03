@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Skybox_Level02_Mat
   m_Shader: {fileID: 4800000, guid: ff6b65b2f8f804c82b25051b14899767, type: 3}
   m_ShaderKeywords: _MAPPING_LATITUDE_LONGITUDE_LAYOUT _SUNDISK_HIGH_QUALITY
@@ -60,7 +61,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _AtmosphereThickness: 0.68
-    - _BottomSkyFalloff: 15.2
+    - _BottomSkyFalloff: 35
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -78,7 +79,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Rotation: 0
-    - _SkyIntensity: 1
+    - _SkyIntensity: 0.7
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -91,8 +92,8 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _AmbientGround: {r: 0.254717, g: 0.15499288, b: 0.15731205, a: 1}
-    - _AmbientHorizon: {r: 0, g: 1, b: 0.84884524, a: 1}
+    - _AmbientGround: {r: 0, g: 0.10218233, b: 0.5849056, a: 1}
+    - _AmbientHorizon: {r: 0.8454138, g: 0.59607846, b: 0.9607843, a: 1}
     - _AmbientSky: {r: 0, g: 0.449816, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
