@@ -7,30 +7,43 @@ public class CameraController : MonoBehaviour
     public delegate void ClickGameObject(GameObject gameObject);
     public static event ClickGameObject OnGameObjectClicked;
 
+    public GameObject InspectLight;
+
     private CameraMove inspectController;
     private GyroOrientation gyroController;
 
     private Quaternion savedCameraRotation;
     private Vector3 savedCameraPosition;
+    private GameObject _target;
+    private bool _inInspectionMode;
 
     void OnGameStateChange(GameState newGameState)
     {
-        if (newGameState == GameState.Adventure)
+        if (newGameState == GameState.Adventure || newGameState == GameState.Inventory)
         {
-            inspectController.enabled = false;
             gyroController.enabled = true;
+            //inspectController.enabled = false;
 
-            gameObject.transform.position = savedCameraPosition;
-            gameObject.transform.rotation = savedCameraRotation;
+            if (_inInspectionMode)
+            {
+                gameObject.transform.position = savedCameraPosition;
+                //gameObject.transform.rotation = savedCameraRotation;
+                _inInspectionMode = false;
+                InspectLight.SetActive(false);
+            }
         }
         else if (newGameState == GameState.Inspect)
         {
-            savedCameraRotation = gameObject.transform.rotation;
-            savedCameraPosition = gameObject.transform.position;
+            _target = GameManager.Instance.TargetObject;
+            //inspectController.target = _target.transform;
 
-            
-            //inspectController.enabled = true;
+            savedCameraPosition = gameObject.transform.position;
+            //savedCameraRotation = gameObject.transform.rotation;
+            gameObject.transform.position -= new Vector3(0, 2000, 0);
+            InspectLight.SetActive(true);
+            _inInspectionMode = true;
             gyroController.enabled = false;
+            //inspectController.enabled = true;
         }
     }
 
@@ -46,7 +59,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && OnGameObjectClicked != null)
+        if (GameManager.Instance.CurrentGameState != GameState.Inspect && Input.GetMouseButtonDown(0) && OnGameObjectClicked != null)
         {
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
@@ -55,5 +68,10 @@ public class CameraController : MonoBehaviour
                 OnGameObjectClicked(hit.transform.gameObject);
 			}
 		}
+
+        if (GameManager.Instance.CurrentGameState == GameState.Inspect && Input.touchCount == 1)
+        {
+            _target.transform.Rotate(/*Input.touches[0].deltaPosition.y/2*/ 0, 0, -Input.touches[0].deltaPosition.x/2);
+        }
     }
 }

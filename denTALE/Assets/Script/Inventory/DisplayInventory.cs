@@ -5,12 +5,17 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public delegate void OpenInventory(bool isOpen);
+public delegate void OpenCrafting(bool isOpen);
 
-public class DisplayInventory : MonoBehaviour, IDragHandler, IEndDragHandler
+public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandler, IEndDragHandler
 {
     public static event OpenInventory OnInventoryOpened;
+    public static event OpenCrafting OnCraftingOpened;
     public GameObject InventorySlotPrefab;
     public Canvas Canvas;
+    public Button MenuButton;
+    public Button CraftButton;
+    public Button CraftCloseButton;
     private Dictionary<string, GameObject> _inventorySlots = new Dictionary<string, GameObject>();
     private int _currentScrollPosition = 0;
     private bool _isOpen = false;
@@ -26,6 +31,40 @@ public class DisplayInventory : MonoBehaviour, IDragHandler, IEndDragHandler
         GameManager.Instance.OnAddItemToInventory += OnItemAddedToInventory;
         GameManager.Instance.OnRemoveItemFromInventory += OnItemRemovedFromInventory;
         // TODO: subscribe to scroll event
+
+        GameManager.Instance.OnGameStateChange += OnGameStateChanged;
+
+        CraftButton.gameObject.SetActive(false);
+        CraftCloseButton.gameObject.SetActive(false);
+    }
+
+    private void OnGameStateChanged(GameState newState)
+    {
+        if (newState == GameState.Inspect)
+        {
+            CraftButton.gameObject.SetActive(true);
+            CraftCloseButton.gameObject.SetActive(true);
+            EnableCrafting(false);
+        }
+        else
+        {
+            CraftButton.gameObject.SetActive(false);
+            CraftCloseButton.gameObject.SetActive(false);
+        }
+
+        if (newState == GameState.Adventure)
+        {
+            MenuButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            MenuButton.gameObject.SetActive(false);
+        }
+    }
+
+    public void EnableCrafting(bool enabled)
+    {
+        CraftButton.interactable = enabled;
     }
 
     public void OpenInventory(Inventory inventory)
@@ -78,6 +117,19 @@ public class DisplayInventory : MonoBehaviour, IDragHandler, IEndDragHandler
         return new Vector3(10 + (110 * (i % 2)), -10 - (110 * (i / 2)) - scrollPosition);
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (!_isOpen)
+        {
+            if (OnInventoryOpened != null)
+            {
+                OnInventoryOpened(true);
+            }
+            _isOpen = true;
+            _rectTransform.anchoredPosition = new Vector2(0, 0);
+        }
+    }
+
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 newPosition = new Vector2(_rectTransform.anchoredPosition.x + (eventData.delta.x / Canvas.scaleFactor), _rectTransform.anchoredPosition.y);
@@ -104,6 +156,10 @@ public class DisplayInventory : MonoBehaviour, IDragHandler, IEndDragHandler
         }
         else if (_isOpen && _rectTransform.anchoredPosition.x < -35)
         {
+            if (GameManager.Instance.CurrentGameState == GameState.Inspect)
+            {
+                CloseCrafting();
+            }
             if (OnInventoryOpened != null)
             {
                 OnInventoryOpened(false);
@@ -119,5 +175,23 @@ public class DisplayInventory : MonoBehaviour, IDragHandler, IEndDragHandler
         {
             _rectTransform.anchoredPosition = new Vector2(-235, 0);
         }
+    }
+
+    public void CloseCrafting()
+    {
+        if (OnCraftingOpened != null)
+        {
+            OnCraftingOpened(false);
+        }
+    }
+
+    public void Craft()
+    {
+
+    }
+
+    public void OpenMenu()
+    {
+
     }
 }

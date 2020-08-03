@@ -23,9 +23,14 @@ public class GameManager : MonoBehaviour
     public event RemoveItemFromInventory OnRemoveItemFromInventory;
     public Animator transition;
     public float transitionDuration = 1f;
+    public DisplayInventory DisplayInventory;
 
     public Item Target { get; private set; }
+    public GameObject TargetObject { get; private set; }
     private Animator AnimatorObj;
+    private List<GameObject> _inspectObjects = new List<GameObject>();
+    private List<Item> _inspectItems = new List<Item>();
+    Dictionary<Item[], Item> recipes = new Dictionary<Item[], Item>();
     public static GameManager Instance
     {
         get { return instance; }
@@ -59,18 +64,54 @@ public class GameManager : MonoBehaviour
 
     private void OnItemClicked(Item item)
     {
-        Target = item;
-        setCurrentGameState(GameState.Inspect);
+        if (!_inspectItems.Contains(item))
+        {
+            foreach (GameObject gameObject in _inspectObjects)
+            {
+                Destroy(gameObject);
+            }
+            _inspectObjects.Clear();
+            _inspectItems.Clear();
 
-        GameObject prev = Instantiate(item.prefab, Vector3.zero/*Camera.main.transform.position + (Camera.main.transform.forward.normalized * 4) + (Camera.main.transform.right.normalized * 2)*/, Quaternion.identity);
-        prev.transform.parent = Camera.main.transform;
-        prev.transform.localPosition = new Vector3(1.5f, 1.0f, 6.0f);
-        prev.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+            GameObject prev = Instantiate(item.prefab, Vector3.zero, Quaternion.identity);
+            prev.transform.parent = Camera.main.transform;
+            prev.transform.localPosition = new Vector3(1.5f + item.prefab.transform.position.x, 1.0f + item.prefab.transform.position.y, 6.0f + item.prefab.transform.position.z);
+            prev.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+            //prev.transform.Rotate(-90, 0, 0);
+            _inspectObjects.Add(prev);
+            _inspectItems.Add(item);
+            TargetObject = prev;
+
+            if (recipes.TryGetValue(_inspectItems.ToArray(), out Item craftResult))
+            {
+                DisplayInventory.EnableCrafting(true);
+            }
+        }
+
+        if (currentGameState != GameState.Inspect)
+        {
+            setCurrentGameState(GameState.Inspect);
+
+        }
+    }
+
+    private void OnCraftingOpened(bool isOpen)
+    {
+        if (isOpen == false)
+        {
+            foreach (GameObject gameObject in _inspectObjects)
+            {
+                Destroy(gameObject);
+            }
+            _inspectObjects.Clear();
+            _inspectItems.Clear();
+            setCurrentGameState(GameState.Inventory);
+        }
     }
 
     void OnGameObjectClicked(GameObject gameObj)
     {
-        if (gameObj.tag == "Artifact" && currentGameState == GameState.Adventure)
+        if (gameObj.tag == "Artifact" && (currentGameState == GameState.Adventure || currentGameState == GameState.Inventory))
         {
             Artifact artifact = gameObj.GetComponent<Artifact>();
             if (artifact.isCursed)
@@ -137,7 +178,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
 
-        Dictionary<Item[], Item> recipes = new Dictionary<Item[], Item>();
+        recipes = new Dictionary<Item[], Item>();
         foreach (Item item in Resources.LoadAll<Item>("Items"))
         {
             if (item.consistsOf.Length > 0)
@@ -156,6 +197,7 @@ public class GameManager : MonoBehaviour
         AccelerationManager.ShakeStarted += OnShakeStarted;
         AccelerationManager.ShakeEnded += OnShakeEnded;
         DisplayInventory.OnInventoryOpened += OnInventoryOpened;
+        DisplayInventory.OnCraftingOpened += OnCraftingOpened;
         ItemSlot.OnItemClicked += OnItemClicked;
         
         setCurrentGameState(GameState.Adventure);
