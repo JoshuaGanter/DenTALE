@@ -23,9 +23,14 @@ public class GameManager : MonoBehaviour
     public event RemoveItemFromInventory OnRemoveItemFromInventory;
     public Animator transition;
     public float transitionDuration = 1f;
+    public DisplayInventory DisplayInventory;
 
     public Item Target { get; private set; }
+    public GameObject TargetObject { get; private set; }
     private Animator AnimatorObj;
+    private List<GameObject> _inspectObjects = new List<GameObject>();
+    private List<Item> _inspectItems = new List<Item>();
+    Dictionary<Item[], Item> recipes = new Dictionary<Item[], Item>();
     public static GameManager Instance
     {
         get { return instance; }
@@ -45,9 +50,68 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void OnInventoryOpened(bool isOpen)
+    {
+        if (isOpen)
+        {
+            setCurrentGameState(GameState.Inventory);
+        }
+        else
+        {
+            setCurrentGameState(GameState.Adventure);
+        }
+    }
+
+    private void OnItemClicked(Item item)
+    {
+        if (!_inspectItems.Contains(item))
+        {
+            foreach (GameObject gameObject in _inspectObjects)
+            {
+                Destroy(gameObject);
+            }
+            _inspectObjects.Clear();
+            _inspectItems.Clear();
+
+            GameObject prev = Instantiate(item.prefab, Vector3.zero, Quaternion.identity);
+            prev.transform.parent = Camera.main.transform;
+            prev.transform.localPosition = new Vector3(1.5f + item.prefab.transform.position.x, 1.0f + item.prefab.transform.position.y, 6.0f + item.prefab.transform.position.z);
+            prev.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+            //prev.transform.Rotate(-90, 0, 0);
+            _inspectObjects.Add(prev);
+            _inspectItems.Add(item);
+            TargetObject = prev;
+
+            if (recipes.TryGetValue(_inspectItems.ToArray(), out Item craftResult))
+            {
+                DisplayInventory.EnableCrafting(true);
+            }
+        }
+
+        if (currentGameState != GameState.Inspect)
+        {
+            setCurrentGameState(GameState.Inspect);
+
+        }
+    }
+
+    private void OnCraftingOpened(bool isOpen)
+    {
+        if (isOpen == false)
+        {
+            foreach (GameObject gameObject in _inspectObjects)
+            {
+                Destroy(gameObject);
+            }
+            _inspectObjects.Clear();
+            _inspectItems.Clear();
+            setCurrentGameState(GameState.Inventory);
+        }
+    }
+
     void OnGameObjectClicked(GameObject gameObj)
     {
-        if (gameObj.tag == "Artifact" && currentGameState == GameState.Adventure)
+        if (gameObj.tag == "Artifact" && (currentGameState == GameState.Adventure || currentGameState == GameState.Inventory))
         {
             Artifact artifact = gameObj.GetComponent<Artifact>();
             if (artifact.isCursed)
@@ -64,7 +128,7 @@ public class GameManager : MonoBehaviour
                 Destroy(gameObj);
             }
         }
-        else if (gameObj.tag == "Artifact" && currentGameState == GameState.Inspect)
+        /*else if (gameObj.tag == "Artifact" && currentGameState == GameState.Inspect)
         {
 
             AnimatorObj = gameObj.GetComponentInChildren<Animator>();
@@ -80,7 +144,7 @@ public class GameManager : MonoBehaviour
             {
                 AnimatorObj.SetBool("Auf", false);
             }
-        }
+        }*/
         else if (gameObj.tag == "InteractableObject")
         {
             gameObj.GetComponent<Interactable>()?.InteractWith();
@@ -114,7 +178,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(gameObject);
 
-        Dictionary<Item[], Item> recipes = new Dictionary<Item[], Item>();
+        recipes = new Dictionary<Item[], Item>();
         foreach (Item item in Resources.LoadAll<Item>("Items"))
         {
             if (item.consistsOf.Length > 0)
@@ -132,29 +196,18 @@ public class GameManager : MonoBehaviour
         CameraController.OnGameObjectClicked += OnGameObjectClicked;
         AccelerationManager.ShakeStarted += OnShakeStarted;
         AccelerationManager.ShakeEnded += OnShakeEnded;
+        DisplayInventory.OnInventoryOpened += OnInventoryOpened;
+        DisplayInventory.OnCraftingOpened += OnCraftingOpened;
+        ItemSlot.OnItemClicked += OnItemClicked;
         
         setCurrentGameState(GameState.Adventure);
 
         _player = GetComponentInChildren<Player>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            Debug.Log("tab key down");
-            setCurrentGameState(GameState.Inventory);
-        }
-        else if (Input.GetKeyUp(KeyCode.Tab))
-        {
-            Debug.Log("tab key up");
-            setCurrentGameState(GameState.Adventure);
-        }
-    }
-
     void OnGUI()
     {
-        if (currentGameState == GameState.Inspect)
+        /*if (currentGameState == GameState.Inspect)
         {
             if (GUI.Button(new Rect(10, 10, 150, 100), "Back"))
             {
@@ -166,8 +219,8 @@ public class GameManager : MonoBehaviour
                 }
                 Target = null;
             }
-        }
-        GUI.Label(new Rect(10, 120, 150, 100), "Items in inventory: " + _player.Inventory.Count);
+        }*/
+        GUI.Label(new Rect(500, 10, 150, 100), "Game State: " + currentGameState.ToString());
     }
 
     IEnumerator SwitchScenes(int toSceneIndex)

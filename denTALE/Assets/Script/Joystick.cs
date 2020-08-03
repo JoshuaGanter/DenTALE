@@ -29,6 +29,8 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
     {
         _bgImage = GetComponent<Image>();
         _joystickImage = transform.GetChild(0).GetComponent<Image>();
+
+        GameManager.Instance.OnGameStateChange += OnGameStateChange;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -55,5 +57,19 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointer
     {
         _inputVector = Vector3.zero;
         _joystickImage.rectTransform.anchoredPosition = Vector3.zero;
+    }
+
+    private void OnGameStateChange(GameState newState)
+    {
+        switch (newState)
+        {
+            case GameState.Adventure:
+            case GameState.Inventory:
+                gameObject.SetActive(true);
+                break;
+            default:
+                gameObject.SetActive(false);
+                break;
+        }
     }
 }

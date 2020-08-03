@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
   m_Name: Pumpe
   m_EditorClassIdentifier: 
-  prefab: {fileID: -927199367670048503, guid: 6661b540e23a05346b25f0834bffe960, type: 3}
+  prefab: {fileID: 5560905192990358398, guid: 48ce29caf3fadc94ea5f92b30cd43dea, type: 3}
   icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   consistsOf: []
   title: Pumpe
