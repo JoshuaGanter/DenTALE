@@ -79,12 +79,13 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
     private void OnItemAddedToInventory(Item item)
     {
         GameObject inventorySlot = Instantiate<GameObject>(InventorySlotPrefab, Vector3.zero, Quaternion.identity, transform);
-        inventorySlot.GetComponent<RectTransform>().localPosition = GetPosition(_inventorySlots.Count, _currentScrollPosition);
+        //inventorySlot.GetComponent<RectTransform>().localPosition = GetPosition(_inventorySlots.Count, _currentScrollPosition);
         inventorySlot.GetComponent<Image>().sprite = item.icon;
         ItemSlot itemSlot = inventorySlot.GetComponent<ItemSlot>();
         itemSlot.Item = item;
         itemSlot.Canvas = Canvas;
         _inventorySlots.Add(item.title, inventorySlot);
+        ReorderInventory();
     }
 
     private void OnItemRemovedFromInventory(Item item)
@@ -95,6 +96,17 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
             Destroy(inventorySlot);
         }
         _inventorySlots.Remove(item.title);
+        ReorderInventory();
+    }
+
+    private void ReorderInventory()
+    {
+        int i = 0;
+        foreach (GameObject item in _inventorySlots.Values)
+        {
+            item.GetComponent<RectTransform>().localPosition = GetPosition(i, _currentScrollPosition);
+            i++;
+        }
     }
 
     private void OnInventoryCleared()

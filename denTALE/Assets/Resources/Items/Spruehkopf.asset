@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
   m_Name: Spruehkopf
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  icon: {fileID: 0}
+  prefab: {fileID: 1835977521469593694, guid: 66a65e757dc67c14597e3b65f7ba8ace, type: 3}
+  icon: {fileID: 21300000, guid: b80037a0073f05c40a60bfdc63d078f2, type: 3}
   consistsOf: []
   title: "Spr\xFChkopf"
   description: 

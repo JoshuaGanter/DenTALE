@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
   m_Name: Gaskartusche
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  icon: {fileID: 0}
+  prefab: {fileID: 4157861122088248240, guid: f1e4c466b5a4f554996487ecb153c8c4, type: 3}
+  icon: {fileID: 21300000, guid: cdd35fc8e66d2274f8f1badc49ebca39, type: 3}
   consistsOf: []
   title: Gaskartusche
   description: 

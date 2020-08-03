@@ -10,6 +10,7 @@ public enum GameScene {
 
 public delegate void AddItemToInventory(Item item);
 public delegate void RemoveItemFromInventory(Item item);
+public delegate void TargetChanged(GameObject newTarget);
 
 public class GameManager : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
     public event GameStateChange OnGameStateChange;
     public event AddItemToInventory OnAddItemToInventory;
     public event RemoveItemFromInventory OnRemoveItemFromInventory;
+    public event TargetChanged OnTargetChanged;
     public Animator transition;
     public float transitionDuration = 1f;
     public DisplayInventory DisplayInventory;
@@ -30,7 +32,8 @@ public class GameManager : MonoBehaviour
     private Animator AnimatorObj;
     private List<GameObject> _inspectObjects = new List<GameObject>();
     private List<Item> _inspectItems = new List<Item>();
-    Dictionary<Item[], Item> recipes = new Dictionary<Item[], Item>();
+    private Dictionary<Item[], Item> recipes = new Dictionary<Item[], Item>();
+    private bool _isShaking;
     public static GameManager Instance
     {
         get { return instance; }
@@ -73,14 +76,19 @@ public class GameManager : MonoBehaviour
             _inspectObjects.Clear();
             _inspectItems.Clear();
 
-            GameObject prev = Instantiate(item.prefab, Vector3.zero, Quaternion.identity);
-            prev.transform.parent = Camera.main.transform;
+            GameObject prev = Instantiate(item.prefab, Vector3.zero, Quaternion.identity, Camera.main.transform);
             prev.transform.localPosition = new Vector3(1.5f + item.prefab.transform.position.x, 1.0f + item.prefab.transform.position.y, 6.0f + item.prefab.transform.position.z);
             prev.transform.localRotation = Quaternion.Euler(-90, 0, 0);
             //prev.transform.Rotate(-90, 0, 0);
             _inspectObjects.Add(prev);
             _inspectItems.Add(item);
             TargetObject = prev;
+            Target = item;
+
+            if (OnTargetChanged != null)
+            {
+                OnTargetChanged(prev);
+            }
 
             if (recipes.TryGetValue(_inspectItems.ToArray(), out Item craftResult))
             {
@@ -153,17 +161,34 @@ public class GameManager : MonoBehaviour
 
     void OnShakeStarted()
     {
-
+        _isShaking = true;
     }
 
     void OnShakeEnded()
     {
+        _isShaking = false;
         // TODO: play breaking sound
 
         if (currentGameState == GameState.Inspect && Target.consistsOf.Length != 0)
         {
             _player.Inventory.RemoveItem(Target);
             _player.Inventory.AddItems(Target.consistsOf);
+
+            if (OnRemoveItemFromInventory != null)
+            {
+                OnRemoveItemFromInventory(Target);
+            }
+            if (OnAddItemToInventory != null)
+            {
+                foreach (Item item in Target.consistsOf)
+                {
+                    OnAddItemToInventory(item);
+                }
+            }
+
+
+            OnItemClicked(Target.consistsOf[0]);
+            
             // TODO: play some kind of animation
         }
     }
@@ -221,6 +246,11 @@ public class GameManager : MonoBehaviour
             }
         }*/
         GUI.Label(new Rect(500, 10, 150, 100), "Game State: " + currentGameState.ToString());
+        if (_isShaking)
+        {
+            GUI.Label(new Rect(500, 110, 150, 100), "shaking!!");
+        }
+        
     }
 
     IEnumerator SwitchScenes(int toSceneIndex)

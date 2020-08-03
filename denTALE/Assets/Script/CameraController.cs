@@ -47,6 +47,11 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    private void OnTargetChange(GameObject target)
+    {
+        _target = target;
+    }
+
     void Start()
     {
         inspectController = gameObject.GetComponent<CameraMove>();
@@ -55,6 +60,7 @@ public class CameraController : MonoBehaviour
         savedCameraPosition = gameObject.transform.position;
 
         GameManager.Instance.OnGameStateChange += OnGameStateChange;
+        GameManager.Instance.OnTargetChanged += OnTargetChange;
     }
 
     void Update()
