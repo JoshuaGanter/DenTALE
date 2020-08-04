@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fuellpistole
   m_EditorClassIdentifier: 
   prefab: {fileID: 6889771358960219597, guid: 1964a743a00ccfb46b690f5ef84aa85f, type: 3}
-  icon: {fileID: 21300008, guid: 74b7e35cda31cb7499b79fae64a30227, type: 3}
+  icon: {fileID: 21300000, guid: acd821465b416e34fabc5b5b721ac641, type: 3}
   consistsOf:
   - {fileID: 11400000, guid: 14d9a6ee91b5f0e4dbb03647307f0912, type: 2}
   - {fileID: 11400000, guid: cf8079f82b489ed499cdd679b83b2d9e, type: 2}
