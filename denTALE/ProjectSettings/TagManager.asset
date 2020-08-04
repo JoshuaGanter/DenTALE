@@ -7,6 +7,7 @@ TagManager:
   - Artifact
   - Scene
   - InteractableObject
+  - Animation
   layers:
   - Default
   - TransparentFX
