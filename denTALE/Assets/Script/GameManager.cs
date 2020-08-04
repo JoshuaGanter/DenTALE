@@ -68,8 +68,14 @@ public class GameManager : MonoBehaviour
     {
         if (!_inspectItems.Contains(item) && _inspectItems.Count < 3)
         {
+            float rotateZ = 0;
+            if (_inspectObjects.Count >= 1)
+            {
+                rotateZ = _inspectObjects[_inspectObjects.Count - 1].transform.rotation.eulerAngles.z;
+            }
             GameObject prev = Instantiate(item.prefab, Vector3.zero, Quaternion.identity, Camera.main.transform);
             prev.transform.localRotation = Quaternion.Euler(-90, 0, 0);
+            prev.transform.Rotate(0, 0, rotateZ);
             _inspectObjects.Add(prev);
             _inspectItems.Add(item);
 
@@ -152,6 +158,7 @@ public class GameManager : MonoBehaviour
 
     private void OnCraft()
     {
+        _inspectItems.Sort((x, y) => string.Compare(x.title, y.title));
         if (recipes.TryGetValue(_inspectItems.ToArray(), out Item craftResult))
         {
             foreach (Item item in _inspectItems)
@@ -265,7 +272,10 @@ public class GameManager : MonoBehaviour
 
     public void OnRotateItemInInspector(float amount)
     {
-        TargetObject.transform.Rotate(0, 0, -amount);
+        foreach (GameObject gameObject in _inspectObjects)
+        {
+            gameObject.transform.Rotate(0, 0, -amount / 2);
+        }
     }
 
     public void OnClickInScene(Vector2 position)
