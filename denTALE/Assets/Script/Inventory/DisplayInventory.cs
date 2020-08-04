@@ -6,11 +6,13 @@ using UnityEngine.EventSystems;
 
 public delegate void OpenInventory(bool isOpen);
 public delegate void OpenCrafting(bool isOpen);
+public delegate void Craft();
 
 public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandler, IEndDragHandler
 {
     public static event OpenInventory OnInventoryOpened;
     public static event OpenCrafting OnCraftingOpened;
+    public static event Craft OnCraft;
     public GameObject InventorySlotPrefab;
     public Canvas Canvas;
     public Button MenuButton;
@@ -199,7 +201,10 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
 
     public void Craft()
     {
-
+        if (OnCraft != null)
+        {
+            OnCraft();
+        }
     }
 
     public void OpenMenu()

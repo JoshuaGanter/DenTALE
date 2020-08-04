@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 6823760525011702327}
   - component: {fileID: 711678277059043848}
   - component: {fileID: 679779614232046635}
+  - component: {fileID: -414079594283512382}
   m_Layer: 0
   m_Name: Gaskartusche
   m_TagString: Untagged
@@ -159,3 +160,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &-414079594283512382
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4157861122088248240}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03902372, y: 0.008240618, z: 0.00824062}
+  m_Center: {x: -0.0038558245, y: 3.3087225e-24, z: -2.328307e-10}

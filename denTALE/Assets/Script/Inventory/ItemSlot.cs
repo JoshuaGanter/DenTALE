@@ -5,10 +5,12 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public delegate void ItemClicked(Item item);
+public delegate void ItemDragged(Item item);
 
 public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     public static event ItemClicked OnItemClicked;
+    public static event ItemDragged OnItemDragged;
     public Item Item;
     public Canvas Canvas;
     private Vector2 _startPosition;
@@ -46,7 +48,13 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IDragHandler, IBegi
         }
         else if (GameManager.Instance.CurrentGameState == GameState.Inspect)
         {
-            // TODO: Add item to craft blubdiedub
+            if (!RectTransformUtility.RectangleContainsScreenPoint(gameObject.GetComponentInParent<RectTransform>(), eventData.pressPosition))
+            {
+                if (OnItemDragged != null)
+                {
+                    OnItemDragged(Item);
+                }
+            }
         }
         _rectTransform.anchoredPosition = _startPosition;
     }

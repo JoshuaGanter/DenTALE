@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7211700369966922532}
   - component: {fileID: 7440528793464280117}
   - component: {fileID: 7692244442674699199}
+  - component: {fileID: -4338915310492925862}
   m_Layer: 0
   m_Name: Farbkartusche
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &-4338915310492925862
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8694474064520340832}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.04563495, y: 0.045634963, z: 0.07416645}
+  m_Center: {x: 0, y: 4.9620164e-16, z: -0.034917094}
