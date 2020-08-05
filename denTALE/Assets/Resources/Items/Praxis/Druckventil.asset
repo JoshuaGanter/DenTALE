@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
-  m_Name: Gaskartusche
+  m_Name: Druckventil
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4157861122088248240, guid: f1e4c466b5a4f554996487ecb153c8c4, type: 3}
-  icon: {fileID: 21300000, guid: cdd35fc8e66d2274f8f1badc49ebca39, type: 3}
+  prefab: {fileID: 728810465262882421, guid: 419445314c5bc0642823956f2adab2b3, type: 3}
+  icon: {fileID: 21300000, guid: c623ea5ce4bde7d49b1f8444283c3fe5, type: 3}
   consistsOf: []
-  title: Gaskartusche
-  description: "Eine Gaskartusche, wie man sie heutzutage aus der heimischen Zapfanlage
-    kennt, hier eingesetzt um die F\xFCllung herauszupressen."
+  title: Druckventil
+  description: "H\xE4lt die Pumpe dicht."

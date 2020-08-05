@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
+  m_Name: Pelikan
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5134731707998260273, guid: ada657a9859f0a0448fd5642f4990890, type: 3}
+  icon: {fileID: 21300000, guid: b26da931a413fc248bcbea8480c60d10, type: 3}
+  consistsOf:
+  - {fileID: 11400000, guid: 597164d0587036149a67e92d3a4f0363, type: 2}
+  - {fileID: 11400000, guid: 94a3795b2f125d34ca0518f20d3547cc, type: 2}
+  - {fileID: 11400000, guid: 8dde768618ce206418b66c4430c83af3, type: 2}
+  title: Pelikan
+  description: "Ein robustes Brechwerkzeug, das zum Entfernen von Z\xE4hnen genutzt
+    wurde."
