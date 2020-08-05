@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
+  m_Name: ApolloniasOrb
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3163631352560818830, guid: 37f50f7c34519764186ba8e05ca79d99, type: 3}
+  icon: {fileID: 21300000, guid: ed671ffce9623f54a977b705315b1b6a, type: 3}
+  consistsOf: []
+  title: Apollonias Orb
+  description: Eine kleine leuchtende und fliegende Kugel, welche die Seele der Apollonia
+    Statue im Tempel darstellt.
