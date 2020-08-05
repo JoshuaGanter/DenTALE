@@ -1278,8 +1278,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.18, y: 0.13, z: 0.54}
-  m_Center: {x: 0, y: 0.0000130254775, z: 0.0021185353}
+  m_Size: {x: 0.18, y: 0.13, z: 0.15}
+  m_Center: {x: 0, y: 0.0000130254775, z: -0.06}
 --- !u!1001 &620085075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2139,6 +2139,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: e454b32ba05d0c1498852ab5404042e7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Artifact
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e454b32ba05d0c1498852ab5404042e7, type: 3}
 --- !u!4 &1094607465 stripped
@@ -2147,6 +2152,40 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1094607464}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1094607466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: e454b32ba05d0c1498852ab5404042e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1094607464}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1094607467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094607466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33c1948447ebca45b7f639e8383f134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCursed: 0
+  toScene: 1
+  Item: {fileID: 11400000, guid: 41c001748719fab44a60de2459ebaaae, type: 2}
+--- !u!65 &1094607468
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1094607466}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.8730345, y: 14.568432, z: 37.736485}
+  m_Center: {x: 0.0000147259025, y: -0.16959359, z: 5.072081}
 --- !u!1001 &1110281435
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4312,8 +4351,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.08, y: 0.1, z: 0.2}
-  m_Center: {x: 0.0000000018134839, y: -2.2894174e-10, z: 0.012474796}
+  m_Size: {x: 0.08, y: 0.1, z: 0.03}
+  m_Center: {x: 0.0000000018134839, y: -2.2894174e-10, z: 0.01}
 --- !u!1001 &2138637452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4421,6 +4460,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 1355e643eec12944bbc687e06d3d1b75,
+        type: 3}
+      propertyPath: m_TagString
+      value: Artifact
+      objectReference: {fileID: 0}
     - target: {fileID: 1649479024533984906, guid: 1355e643eec12944bbc687e06d3d1b75,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4434,6 +4478,40 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2138637452}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2138637454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 1355e643eec12944bbc687e06d3d1b75,
+    type: 3}
+  m_PrefabInstance: {fileID: 2138637452}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2138637455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138637454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33c1948447ebca45b7f639e8383f134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCursed: 0
+  toScene: 1
+  Item: {fileID: 11400000, guid: c43cd96287642744dabe98877f464400, type: 2}
+--- !u!65 &2138637456
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138637454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22, y: -0.03, z: 0.35}
+  m_Center: {x: -0.07, y: -0.000000005122274, z: -0.0017701982}
 --- !u!1 &1327935728054474009
 GameObject:
   m_ObjectHideFlags: 0

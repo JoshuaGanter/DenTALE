@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
+  m_Name: Spruehflasche
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2310161755962799568, guid: d7cefe5b0bca9264bb12e3b79bc5c411, type: 3}
+  icon: {fileID: 21300000, guid: b8116a8dd9b4ab542b62863d762939c6, type: 3}
+  consistsOf:
+  - {fileID: 11400000, guid: 41c001748719fab44a60de2459ebaaae, type: 2}
+  - {fileID: 11400000, guid: dcd7bb59282edd349b601c87df7d4d24, type: 2}
+  - {fileID: 11400000, guid: b5e9c687251cfd54ebc5c6992bb77ed8, type: 2}
+  title: "Spr\xFChflasche"
+  description: "Bietet die M\xF6glichkeit Mundsp\xFClung gro\xDFfl\xE4chig und gleichm\xE4\xDFig
+    zu verteilen."

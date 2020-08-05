@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
-  m_Name: Gaskartusche
+  m_Name: Drehknopf
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4157861122088248240, guid: f1e4c466b5a4f554996487ecb153c8c4, type: 3}
-  icon: {fileID: 21300000, guid: cdd35fc8e66d2274f8f1badc49ebca39, type: 3}
+  prefab: {fileID: 9013685963968763745, guid: 2b61ffe277c7122409f1d4be50a3ecd5, type: 3}
+  icon: {fileID: 21300000, guid: 1dae6023256320e478fc20ee3b8749d8, type: 3}
   consistsOf: []
-  title: Gaskartusche
-  description: "Eine Gaskartusche, wie man sie heutzutage aus der heimischen Zapfanlage
-    kennt, hier eingesetzt um die F\xFCllung herauszupressen."
+  title: Drehknopf
+  description: "Eine Schraube mit einer Art T\xFCrknopf am einen Ende, um die Klammer
+    des Palikans einzustellen."

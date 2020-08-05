@@ -10,12 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
-  m_Name: Pumpe
+  m_Name: "Gasbef\xFCller"
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5560905192990358398, guid: 48ce29caf3fadc94ea5f92b30cd43dea, type: 3}
-  icon: {fileID: 21300000, guid: a873aa00329d2d64aab5d5df1aa782ad, type: 3}
+  prefab: {fileID: 2162668919426847512, guid: 7021644f9d37f7b4898c153cef9cf440, type: 3}
+  icon: {fileID: 21300000, guid: b9ed2629658ae4f42966f180c94d3310, type: 3}
   consistsOf:
+  - {fileID: 11400000, guid: cf8079f82b489ed499cdd679b83b2d9e, type: 2}
+  - {fileID: 11400000, guid: 597164d0587036149a67e92d3a4f0363, type: 2}
   - {fileID: 11400000, guid: 8eec6d1a19c26c643b473a2c885794f8, type: 2}
-  - {fileID: 11400000, guid: b5e9c687251cfd54ebc5c6992bb77ed8, type: 2}
-  title: Pumpe
-  description: Eine alte Pumpe.
+  title: "Gasbef\xFCller"
+  description: Eine Apparatur, mit der Gas aus einer Kartusche gezielt abgegeben
+    werden kann.
