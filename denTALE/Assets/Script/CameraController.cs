@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     public static event ClickGameObject OnGameObjectClicked;
 
     public GameObject InspectLight;
+    public GameObject Background;
 
     private CameraMove inspectController;
     private GyroOrientation gyroController;
@@ -30,6 +31,7 @@ public class CameraController : MonoBehaviour
                 //gameObject.transform.rotation = savedCameraRotation;
                 //_inInspectionMode = false;
                 InspectLight.SetActive(false);
+                Background.SetActive(false);
             }
         }
         else if (newGameState == GameState.Inspect)
@@ -41,6 +43,7 @@ public class CameraController : MonoBehaviour
             //savedCameraRotation = gameObject.transform.rotation;
             gameObject.transform.position -= new Vector3(0, 2000, 0);
             InspectLight.SetActive(true);
+            Background.SetActive(true);
             _inInspectionMode = true;
             gyroController.enabled = false;
             //inspectController.enabled = true;
