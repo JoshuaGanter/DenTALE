@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 450221287649126340}
   - component: {fileID: 2969454611206444849}
   m_Layer: 0
-  m_Name: Gasbefueller (1)
+  m_Name: Gasbefueller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2162668919426847512}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9.518785, y: 9.518785, z: 9.518785}
+  m_LocalPosition: {x: 0, y: -0.4, z: 0}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 1026307464260458342}
   - {fileID: 3795105947586163818}
