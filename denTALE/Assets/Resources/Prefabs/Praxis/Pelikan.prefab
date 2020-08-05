@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 6881198157615200493}
   - component: {fileID: 3081375846178352784}
   m_Layer: 0
-  m_Name: Pelikan (1)
+  m_Name: Pelikan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,8 +106,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5134731707998260273}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 13.543296, y: 13.543296, z: 13.543296}
+  m_LocalPosition: {x: 0, y: -1.03, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 3831161478898045181}
   m_Father: {fileID: 0}
