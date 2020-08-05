@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
+  m_Name: "Schl\xFCsselgriff"
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3810342955967555745, guid: 2e14ae93c0fcc6f45aed059168b57799, type: 3}
+  icon: {fileID: 21300000, guid: ff52e29ed4657994d8b72c187f6de132, type: 3}
+  consistsOf: []
+  title: "Schl\xFCsselgriff"
+  description: "Der Holzgriff des Zahnschl\xFCssels."
