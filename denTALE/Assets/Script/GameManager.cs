@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public enum GameScene {
     Praxis = 0,
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     public Animator transition;
     public float transitionDuration = 1f;
     public DisplayInventory DisplayInventory;
+    public GameObject _hint;
 
     public Item Target { get; private set; }
     public GameObject TargetObject { get; private set; }
@@ -289,6 +291,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void ShowHint(string message)
+    {
+        _hint.GetComponentInChildren<Text>().text = message;
+        _hint.SetActive(true);
+        StartCoroutine(CloseHint(5));
+    }
+
+    private IEnumerator CloseHint(int waitForSeconds)
+    {
+        yield return new WaitForSeconds(waitForSeconds);
+        _hint.SetActive(false);
+    }
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -298,6 +313,9 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        _player = GetComponentInChildren<Player>();
+        _player.Inventory.Clear();
 
         recipes = new Dictionary<Item[], Item>(new RecipeComparer());
         foreach (Item item in Resources.LoadAll<Item>("Items"))
@@ -326,8 +344,6 @@ public class GameManager : MonoBehaviour
         ClickPlane.OnRotateItemInInspector += OnRotateItemInInspector;
         
         setCurrentGameState(GameState.Adventure);
-
-        _player = GetComponentInChildren<Player>();
     }
 
     void OnGUI()

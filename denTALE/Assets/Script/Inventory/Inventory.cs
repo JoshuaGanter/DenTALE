@@ -30,6 +30,11 @@ public class Inventory : ScriptableObject
         _container.Remove(item);
     }
 
+    public void Clear()
+    {
+        _container.Clear();
+    }
+
     public IEnumerator GetEnumerator()
     {
         return _container.GetEnumerator();

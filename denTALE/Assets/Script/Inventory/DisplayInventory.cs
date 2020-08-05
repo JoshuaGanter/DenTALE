@@ -14,28 +14,43 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
     public static event OpenCrafting OnCraftingOpened;
     public static event Craft OnCraft;
     public GameObject InventorySlotPrefab;
+    public GameObject EmptyInventorySlotPrefab;
     public Canvas Canvas;
     public Button MenuButton;
     public Button CraftButton;
     public Button CraftCloseButton;
+    public Sprite OpenedSprite;
+    public Sprite ClosedSprite;
+    public Button NextButton;
+    public Button PreviousButton;
+    public Text PageText;
+    private Image _image;
     private Dictionary<string, GameObject> _inventorySlots = new Dictionary<string, GameObject>();
     private int _currentScrollPosition = 0;
     private bool _isOpen = false;
     private RectTransform _rectTransform;
+    private int _numberOfRows = 3;
+    private int _currentPage = 0;
+    private int _numberOfPages = 3;
 
     void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
-    }
-
-    void Start()
-    {
         GameManager.Instance.OnAddItemToInventory += OnItemAddedToInventory;
         GameManager.Instance.OnRemoveItemFromInventory += OnItemRemovedFromInventory;
         // TODO: subscribe to scroll event
 
         GameManager.Instance.OnGameStateChange += OnGameStateChanged;
+        _image = GetComponent<Image>();
+    }
 
+    void Start()
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            GameObject o = Instantiate<GameObject>(EmptyInventorySlotPrefab, Vector3.zero, Quaternion.identity, transform);
+            o.transform.localPosition = new Vector3(10 + ((64 + 8) * (i % _numberOfRows)), -10 - ((64 + 8) * (i / _numberOfRows)));
+        }
         CraftButton.gameObject.SetActive(false);
         CraftCloseButton.gameObject.SetActive(false);
     }
@@ -87,6 +102,12 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
         itemSlot.Item = item;
         itemSlot.Canvas = Canvas;
         _inventorySlots.Add(item.title, inventorySlot);
+        _numberOfPages = ((_inventorySlots.Count - 1) / 15) + 1;
+        PageText.text = $"{_currentPage + 1}/{_numberOfPages}";
+        if (_currentPage < _numberOfPages - 1)
+        {
+            NextButton.interactable = true;
+        }
         ReorderInventory();
     }
 
@@ -98,6 +119,17 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
             Destroy(inventorySlot);
         }
         _inventorySlots.Remove(item.title);
+        _numberOfPages = ((_inventorySlots.Count - 1) / 15) + 1;
+        PageText.text = $"{_currentPage + 1}/{_numberOfPages}";
+        if(_currentPage >= _numberOfPages)
+        {
+            _currentPage = _numberOfPages - 1;
+            NextButton.interactable = false;
+            if (_currentPage == 0)
+            {
+                PreviousButton.interactable = false;
+            }
+        }
         ReorderInventory();
     }
 
@@ -106,7 +138,7 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
         int i = 0;
         foreach (GameObject item in _inventorySlots.Values)
         {
-            item.GetComponent<RectTransform>().localPosition = GetPosition(i, _currentScrollPosition);
+            item.GetComponent<RectTransform>().localPosition = GetPosition(i);
             i++;
         }
     }
@@ -114,21 +146,19 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
     private void OnInventoryCleared()
     {
         _inventorySlots.Clear();
-    }
-    
-    private void OnInventoryScrolled(int newScrollPosition)
-    {
-        int i = 0;
-        foreach(GameObject inventorySlot in _inventorySlots.Values)
-        {
-            inventorySlot.GetComponent<RectTransform>().localPosition = GetPosition(i, newScrollPosition);
-            i++;
-        }
+        _currentPage = 0;
+        NextButton.interactable = false;
+        PreviousButton.interactable = false;
     }
 
-    private Vector3 GetPosition(int i, int scrollPosition)
+    private Vector3 GetPosition(int i)
     {
-        return new Vector3(10 + (110 * (i % 2)), -10 - (110 * (i / 2)) - scrollPosition);
+        if (i / 15 != _currentPage)
+        {
+            return new Vector3(-200, -200);
+        }
+        i = i - (15 * _currentPage);
+        return new Vector3(10 + ((64 + 8) * (i % _numberOfRows)), -10 - ((64 + 8) * (i / _numberOfRows)));
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -141,15 +171,16 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
             }
             _isOpen = true;
             _rectTransform.anchoredPosition = new Vector2(0, 0);
+            _image.sprite = OpenedSprite;
         }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         Vector2 newPosition = new Vector2(_rectTransform.anchoredPosition.x + (eventData.delta.x / Canvas.scaleFactor), _rectTransform.anchoredPosition.y);
-        if (newPosition.x < -235)
+        if (newPosition.x < -220)
         {  
-            newPosition.x = -235;
+            newPosition.x = -220;
         }
         else if (newPosition.x > 0)
         {
@@ -160,13 +191,14 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (!_isOpen && _rectTransform.anchoredPosition.x > -200)
+        if (!_isOpen && _rectTransform.anchoredPosition.x > -215)
         {
             if (OnInventoryOpened != null)
             {
                 OnInventoryOpened(true);
             }
             _isOpen = true;
+            _image.sprite = OpenedSprite;
         }
         else if (_isOpen && _rectTransform.anchoredPosition.x < -35)
         {
@@ -179,6 +211,7 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
                 OnInventoryOpened(false);
             }
             _isOpen = false;
+            _image.sprite = ClosedSprite;
         }
         
         if (_isOpen)
@@ -187,7 +220,7 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
         }
         else
         {
-            _rectTransform.anchoredPosition = new Vector2(-235, 0);
+            _rectTransform.anchoredPosition = new Vector2(-220, 0);
         }
     }
 
@@ -210,5 +243,35 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
     public void OpenMenu()
     {
 
+    }
+
+    public void NextPage()
+    {
+        _currentPage++;
+        ReorderInventory();
+        PageText.text = $"{_currentPage + 1}/{_numberOfPages}";
+        if (_currentPage == _numberOfPages - 1)
+        {
+            NextButton.interactable = false;
+        }
+        if (_currentPage != 0)
+        {
+            PreviousButton.interactable = true;
+        }
+    }
+
+    public void PreviousPage()
+    {
+        _currentPage--;
+        ReorderInventory();
+        PageText.text = $"{_currentPage + 1}/{_numberOfPages}";
+        if (_currentPage == 0)
+        {
+            PreviousButton.interactable = false;
+        }
+        if (_currentPage != _numberOfPages - 1)
+        {
+            NextButton.interactable = true;
+        }
     }
 }
