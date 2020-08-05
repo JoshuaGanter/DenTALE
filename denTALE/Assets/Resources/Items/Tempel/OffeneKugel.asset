@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
+  m_Name: OffeneKugel
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2129615948372531898, guid: fd463e696e01ff24c96bb8bf44412ec7, type: 3}
+  icon: {fileID: 21300000, guid: 706b7934d75a0734d80b454694e8813d, type: 3}
+  consistsOf: []
+  title: Offene Kugel
+  description: "Das kugelf\xF6rmige Oberteil der Presse, in welchen das Material
+    eingef\xFCllt und erhitzt wurde."
