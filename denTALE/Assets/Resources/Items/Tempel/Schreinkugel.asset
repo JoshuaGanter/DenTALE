@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
   m_Name: Schreinkugel
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4797067370136673418, guid: e3033fdc6a816ce428ec0aa8e9787e91, type: 3}
+  prefab: {fileID: 1402990812493196892, guid: 1113e09f6f85ef84d8d3bc72c80aa85a, type: 3}
   icon: {fileID: 21300000, guid: ab9045a6f9ed3cd4586fdf3ac612b710, type: 3}
   consistsOf:
   - {fileID: 11400000, guid: c0ea9d234f8cbea418ee6cacf630f746, type: 2}
