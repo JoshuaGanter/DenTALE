@@ -1,12 +1,13 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum GameScene {
-    Praxis = 0,
-    Archiv = 1
+    Archiv = 0,
+    Praxis = 1,
+    Tempel = 2
 }
 
 public delegate void AddItemToInventory(Item item);
@@ -352,7 +353,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    IEnumerator SwitchScenes(int toSceneIndex)
+    public IEnumerator SwitchScenes(int toSceneIndex)
     {
         transition.SetTrigger("Start");
         

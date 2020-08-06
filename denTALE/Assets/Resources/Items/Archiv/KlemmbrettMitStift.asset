@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
+  m_Name: KlemmbrettMitStift
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8881117266582839450, guid: c5b0b136b7ebd074bb58edf1c6998471, type: 3}
+  icon: {fileID: 21300000, guid: 4e5466bc12eba134b93fc891388d398b, type: 3}
+  consistsOf:
+  - {fileID: 11400000, guid: a870ae24676a89b46b561e291e0aecc0, type: 2}
+  - {fileID: 11400000, guid: 38e05bf3954812646bc9e3623d3274d8, type: 2}
+  - {fileID: 11400000, guid: de6cf5f6e9b787d418921c52c376029d, type: 2}
+  title: Klemmbrett mit Stift
+  description: 
