@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
   m_Name: Klemmbrett
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3983922504007909398, guid: e2d1a6101cf26c446878e9cf70ccb158, type: 3}
+  prefab: {fileID: 8155841238180720458, guid: 2ad1aebdef84c20478d1e443e7c2c064, type: 3}
   icon: {fileID: 21300000, guid: f732ebe9df590c74d9904583b6807f03, type: 3}
   consistsOf:
   - {fileID: 11400000, guid: 38e05bf3954812646bc9e3623d3274d8, type: 2}

@@ -546,6 +546,8 @@ MonoBehaviour:
   transitionDuration: 1
   DisplayInventory: {fileID: 2122768184}
   _hint: {fileID: 1368966256}
+  ScenesDone: 0000
+  Curator: {fileID: 0}
 --- !u!4 &258492780
 Transform:
   m_ObjectHideFlags: 0
