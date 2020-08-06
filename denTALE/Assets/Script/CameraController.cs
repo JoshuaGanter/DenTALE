@@ -29,7 +29,7 @@ public class CameraController : MonoBehaviour
             {
                 gameObject.transform.position = savedCameraPosition;
                 //gameObject.transform.rotation = savedCameraRotation;
-                //_inInspectionMode = false;
+                _inInspectionMode = false;
                 InspectLight.SetActive(false);
                 Background.SetActive(false);
             }

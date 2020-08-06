@@ -33,9 +33,13 @@ public class PraxisGebissInteractable : Interactable
         }
         else if (item.title == "Pelikan" && !Cleaned)
         {
+            Debug.Log("clean gebiss");
             GameManager.Instance.ShowHint("Damit sollte ich den Dreck runter bekommen.. Perfekt und da steht auch tatsächlich ein Code auf dem Modell. Den merk ich mir!");
+            Debug.Log("gebiss cleaned");
             Cleaned = true;
+            Debug.Log("start animation");
             Animator.SetBool("Kratzen", true);
+            Debug.Log("animation started");
         }
     }
 }
