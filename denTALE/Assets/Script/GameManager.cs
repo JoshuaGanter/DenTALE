@@ -378,11 +378,16 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator SwitchScenes(int toSceneIndex)
     {
-        if (SceneManager.GetActiveScene().buildIndex == (int) GameScene.Archiv)
+        int fromSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (fromSceneIndex == (int) GameScene.Archiv)
         {
             _savedPlayedCoordinates = _player.transform.position;
         }
-        else if (toSceneIndex == (int) GameScene.Archiv)
+        transition.SetTrigger("Start");
+        
+        yield return new WaitForSeconds(transitionDuration);
+        SceneManager.LoadScene(toSceneIndex);
+        if (toSceneIndex == (int) GameScene.Archiv)
         {
             _player.transform.position = _savedPlayedCoordinates;
             foreach (Item item in _player.Inventory)
@@ -408,47 +413,44 @@ public class GameManager : MonoBehaviour
             {
                 OnAddItemToInventory(item);
             }
-            if (SceneManager.GetActiveScene().buildIndex == (int) GameScene.Praxis)
+            if (fromSceneIndex == (int) GameScene.Praxis)
             {
                 ScenesDone[0] = true;
             }
-            else if (SceneManager.GetActiveScene().buildIndex == (int) GameScene.Tempel)
+            else if (fromSceneIndex == (int) GameScene.Tempel)
             {
                 ScenesDone[1] = true;
+            }
+            foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Artifact"))
+            {
+                Artifact artifact = gameObject.GetComponent<Artifact>();
+                if (artifact.isCursed)
+                {
+                    if (artifact.toScene == GameScene.Praxis && ScenesDone[0])
+                    {
+                        Destroy(gameObject);
+                    }
+                    if (artifact.toScene == GameScene.Tempel && ScenesDone[1])
+                    {
+                        Destroy(gameObject);
+                    }
+                }
+            }
+            if (ScenesDone[0] && ScenesDone[1])
+            {
+                Curator.GetComponentInChildren<Text>().text = "Oh, mein lieber Freund, Sie haben es ja tatsächlich geschafft alle Gegenstände, die ich Ihnen aufgeschrieben habe, zu sammeln. Damit sind Sie der erste und das will etwas heißen, ich habe diese Liste schon vielen Leuten zugemutet. Nun kann ich Ihnen ja auch die Wahrheit sagen: Ich selbst habe die Gegenstände verflucht um einen Nachfolger für die Leitung des Museums zu finden. Wie mir scheint ist das wohl nun geglückt und ich kann mich in meine wohlverdiente Rente zurückziehen, hahaha. Viel Spaß mit dem Museum, Herr Direktor! Hahaha!";
+                Curator.SetActive(true);
             }
         }
         else if (toSceneIndex == (int) GameScene.Praxis)
         {
-            _player.transform.position = new Vector3(5.0f, -12.0f, 11.5f);
+            _player.transform.localPosition = new Vector3(5.0f, -12.0f, 11.5f);
         }
         else if (toSceneIndex == (int) GameScene.Tempel)
         {
-            _player.transform.position = new Vector3(30.0f, -12.0f, -63.0f);
+            _player.transform.localPosition = new Vector3(30.0f, -12.0f, -63.0f);
         }
-        transition.SetTrigger("Start");
-        
-        yield return new WaitForSeconds(transitionDuration);
-        SceneManager.LoadScene(toSceneIndex);
-        foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Artifact"))
-        {
-            Artifact artifact = gameObject.GetComponent<Artifact>();
-            if (artifact.isCursed)
-            {
-                if (artifact.toScene == GameScene.Praxis && ScenesDone[0])
-                {
-                    Destroy(gameObject);
-                }
-                if (artifact.toScene == GameScene.Tempel && ScenesDone[1])
-                {
-                    Destroy(gameObject);
-                }
-            }
-        }
-        if (ScenesDone[0] && ScenesDone[1])
-        {
-            Curator.GetComponentInChildren<Text>().text = "Oh, mein lieber Freund, Sie haben es ja tatsächlich geschafft alle Gegenstände, die ich Ihnen aufgeschrieben habe, zu sammeln. Damit sind Sie der erste und das will etwas heißen, ich habe diese Liste schon vielen Leuten zugemutet. Nun kann ich Ihnen ja auch die Wahrheit sagen: Ich selbst habe die Gegenstände verflucht um einen Nachfolger für die Leitung des Museums zu finden. Wie mir scheint ist das wohl nun geglückt und ich kann mich in meine wohlverdiente Rente zurückziehen, hahaha. Viel Spaß mit dem Museum, Herr Direktor! Hahaha!";
-            Curator.SetActive(true);
-        }
+
         transition.SetTrigger("Reset");
     }
 }
