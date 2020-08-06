@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -32,10 +32,14 @@ public class GameManager : MonoBehaviour
 
     public Item Target { get; private set; }
     public GameObject TargetObject { get; private set; }
+    public bool[] ScenesDone = new bool[]{ false, false };
+    public GameObject Curator;
     private List<GameObject> _inspectObjects = new List<GameObject>();
     private List<Item> _inspectItems = new List<Item>();
     private Dictionary<Item[], Item> recipes;
     private bool _isShaking;
+    private Vector3 _savedPlayedCoordinates;
+    private List<Item> _allItems = new List<Item>();
     public static GameManager Instance
     {
         get { return instance; }
@@ -305,6 +309,18 @@ public class GameManager : MonoBehaviour
         _hint.SetActive(false);
     }
 
+    private Item GetItemByTitle(string title)
+    {
+        foreach (Item item in _allItems)
+        {
+            if (item.title == title)
+            {
+                return item;
+            }
+        }
+        return null;
+    }
+
     void Awake()
     {
         if (instance != null && instance != this)
@@ -327,6 +343,8 @@ public class GameManager : MonoBehaviour
                 components.Sort((x, y) => string.Compare(x.title, y.title));
                 recipes.Add(components.ToArray(), item);
             }
+            _allItems.Add(item);
+            _player.Inventory.AddItem(item);
         }
     }
 
@@ -345,6 +363,11 @@ public class GameManager : MonoBehaviour
         ClickPlane.OnRotateItemInInspector += OnRotateItemInInspector;
         
         setCurrentGameState(GameState.Adventure);
+
+        foreach (Item item in _player.Inventory)
+        {
+            OnAddItemToInventory(item);
+        }
     }
 
     void OnGUI()
@@ -355,10 +378,77 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator SwitchScenes(int toSceneIndex)
     {
+        if (SceneManager.GetActiveScene().buildIndex == (int) GameScene.Archiv)
+        {
+            _savedPlayedCoordinates = _player.transform.position;
+        }
+        else if (toSceneIndex == (int) GameScene.Archiv)
+        {
+            _player.transform.position = _savedPlayedCoordinates;
+            foreach (Item item in _player.Inventory)
+            {
+                OnRemoveItemFromInventory(item);
+            }
+            _player.Inventory.Clear();
+            _player.Inventory.AddItem(GetItemByTitle("KlemmbrettMitStift"));
+            _player.Inventory.AddItem(GetItemByTitle("Archivraumschlüssel"));
+            if (ScenesDone[0])
+            {
+                _player.Inventory.AddItem(GetItemByTitle("Füllpistole"));
+                _player.Inventory.AddItem(GetItemByTitle("Pelikan"));
+                _player.Inventory.AddItem(GetItemByTitle("Pumpe"));
+            }
+            if (ScenesDone[1])
+            {
+                _player.Inventory.AddItem(GetItemByTitle("Gusspresse"));
+                _player.Inventory.AddItem(GetItemByTitle("Mundhammer"));
+                _player.Inventory.AddItem(GetItemByTitle("Zahnschlüssel"));
+            }
+            foreach (Item item in _player.Inventory)
+            {
+                OnAddItemToInventory(item);
+            }
+            if (SceneManager.GetActiveScene().buildIndex == (int) GameScene.Praxis)
+            {
+                ScenesDone[0] = true;
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == (int) GameScene.Tempel)
+            {
+                ScenesDone[1] = true;
+            }
+        }
+        else if (toSceneIndex == (int) GameScene.Praxis)
+        {
+            _player.transform.position = new Vector3(5.0f, -12.0f, 11.5f);
+        }
+        else if (toSceneIndex == (int) GameScene.Tempel)
+        {
+            _player.transform.position = new Vector3(30.0f, -12.0f, -63.0f);
+        }
         transition.SetTrigger("Start");
         
         yield return new WaitForSeconds(transitionDuration);
         SceneManager.LoadScene(toSceneIndex);
+        foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Artifact"))
+        {
+            Artifact artifact = gameObject.GetComponent<Artifact>();
+            if (artifact.isCursed)
+            {
+                if (artifact.toScene == GameScene.Praxis && ScenesDone[0])
+                {
+                    Destroy(gameObject);
+                }
+                if (artifact.toScene == GameScene.Tempel && ScenesDone[1])
+                {
+                    Destroy(gameObject);
+                }
+            }
+        }
+        if (ScenesDone[0] && ScenesDone[1])
+        {
+            Curator.GetComponentInChildren<Text>().text = "Oh, mein lieber Freund, Sie haben es ja tatsächlich geschafft alle Gegenstände, die ich Ihnen aufgeschrieben habe, zu sammeln. Damit sind Sie der erste und das will etwas heißen, ich habe diese Liste schon vielen Leuten zugemutet. Nun kann ich Ihnen ja auch die Wahrheit sagen: Ich selbst habe die Gegenstände verflucht um einen Nachfolger für die Leitung des Museums zu finden. Wie mir scheint ist das wohl nun geglückt und ich kann mich in meine wohlverdiente Rente zurückziehen, hahaha. Viel Spaß mit dem Museum, Herr Direktor! Hahaha!";
+            Curator.SetActive(true);
+        }
         transition.SetTrigger("Reset");
     }
 }
