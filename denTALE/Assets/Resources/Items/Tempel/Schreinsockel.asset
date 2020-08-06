@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e71483204c9e4d548b157ca3ad0666e5, type: 3}
   m_Name: Schreinsockel
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8664428160356177646, guid: f4606d38454616f42afb968591cac0b5, type: 3}
+  prefab: {fileID: 8852980328119143393, guid: ef80c213a34c8b64a9e429b7ebb76e9a, type: 3}
   icon: {fileID: 21300000, guid: 555509b3994b8de4bbea62e5a0e2d902, type: 3}
   consistsOf:
   - {fileID: 11400000, guid: 0b08eca06a6f4b343950f52c63027d65, type: 2}
