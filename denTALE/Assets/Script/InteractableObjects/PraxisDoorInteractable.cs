@@ -10,7 +10,12 @@ public class PraxisDoorInteractable : Interactable
     {
         if (Ofen.GetComponent<PraxisOvenInteractable>().IsExploded || Gebiss.GetComponent<PraxisGebissInteractable>().Cleaned)
         {
+            GameManager.Instance.ShowHint("Na dann stelle ich den Code mal am Zahlenschloss ein … Es öffnet sich tatsächlich. Nichts wie raus hier.");
             StartCoroutine(GameManager.Instance.SwitchScenes((int) GameScene.Archiv));
+        }
+        else
+        {
+            GameManager.Instance.ShowHint("Das muss die Tür hier raus sein, aber das Zahlenschloss sieht stabil aus. Ich muss wohl einen Weg finden es zu öffnen. Vielleicht finde ich ja den Code in der Nähe.");
         }
     }
 }
