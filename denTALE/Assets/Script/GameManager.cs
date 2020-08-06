@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public Item Target { get; private set; }
     public GameObject TargetObject { get; private set; }
-    public bool[] ScenesDone = new bool[]{ false, false };
+    public static bool[] ScenesDone = new bool[]{ false, false };
     public GameObject Curator;
     private List<GameObject> _inspectObjects = new List<GameObject>();
     private List<Item> _inspectItems = new List<Item>();
@@ -378,10 +378,9 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator SwitchScenes(int toSceneIndex)
     {
-        int fromSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (fromSceneIndex == (int) GameScene.Archiv)
+        if (SceneManager.GetActiveScene().buildIndex == (int) GameScene.Archiv)
         {
-            _savedPlayedCoordinates = _player.transform.position;
+            _savedPlayedCoordinates = _player.transform.localPosition;
         }
         transition.SetTrigger("Start");
         
@@ -389,13 +388,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(toSceneIndex);
         if (toSceneIndex == (int) GameScene.Archiv)
         {
-            _player.transform.position = _savedPlayedCoordinates;
+            _player.transform.localPosition = _savedPlayedCoordinates;
             foreach (Item item in _player.Inventory)
             {
                 OnRemoveItemFromInventory(item);
             }
             _player.Inventory.Clear();
-            _player.Inventory.AddItem(GetItemByTitle("KlemmbrettMitStift"));
+            _player.Inventory.AddItem(GetItemByTitle("Klemmbrett mit Stift"));
             _player.Inventory.AddItem(GetItemByTitle("Archivraumschlüssel"));
             if (ScenesDone[0])
             {
@@ -412,29 +411,6 @@ public class GameManager : MonoBehaviour
             foreach (Item item in _player.Inventory)
             {
                 OnAddItemToInventory(item);
-            }
-            if (fromSceneIndex == (int) GameScene.Praxis)
-            {
-                ScenesDone[0] = true;
-            }
-            else if (fromSceneIndex == (int) GameScene.Tempel)
-            {
-                ScenesDone[1] = true;
-            }
-            foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Artifact"))
-            {
-                Artifact artifact = gameObject.GetComponent<Artifact>();
-                if (artifact.isCursed)
-                {
-                    if (artifact.toScene == GameScene.Praxis && ScenesDone[0])
-                    {
-                        Destroy(gameObject);
-                    }
-                    if (artifact.toScene == GameScene.Tempel && ScenesDone[1])
-                    {
-                        Destroy(gameObject);
-                    }
-                }
             }
             if (ScenesDone[0] && ScenesDone[1])
             {
