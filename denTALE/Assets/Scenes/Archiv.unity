@@ -6742,7 +6742,6 @@ MonoBehaviour:
   transitionDuration: 1
   DisplayInventory: {fileID: 1091810544}
   _hint: {fileID: 1682814467}
-  ScenesDone: 0000
   Curator: {fileID: 0}
 --- !u!4 &1009606580
 Transform:
@@ -10749,7 +10748,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cf6a38914c2b28e41ad2e2c6ff513051, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
