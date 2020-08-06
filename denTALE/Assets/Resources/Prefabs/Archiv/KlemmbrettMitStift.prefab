@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 7168823600929051718}
   - component: {fileID: 604040970246125969}
   m_Layer: 0
-  m_Name: Klemmbrett_mit_Stift
+  m_Name: KlemmbrettMitStift
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,8 +265,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8881117266582839450}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5.736093, y: 5.736093, z: 5.736093}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
+  m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children:
   - {fileID: 322314423377747413}
   - {fileID: 2613782669898513341}

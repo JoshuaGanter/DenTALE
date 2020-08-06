@@ -1593,7 +1593,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -448, y: -104}
+  m_AnchoredPosition: {x: -470.5, y: -104}
   m_SizeDelta: {x: 339, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1093735547
@@ -1953,8 +1953,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 109.9, y: -111.77}
-  m_SizeDelta: {x: 739.5215, y: 476.46518}
+  m_AnchoredPosition: {x: 97, y: 0.0000076294}
+  m_SizeDelta: {x: 739.5215, y: 580.7727}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1163865306
 MonoBehaviour:
@@ -1988,9 +1988,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: This is a very long text, that probably will be split into multiple lines.
-    It is a general introduction to our game and describes, what you have to do.
-    In This case I think I can stop writing something, because it is enough to blabla.
+  m_Text: "Ah hallo, Sie m\xFCssen der neue Kustos sein. Willkommen in unserem kleinen
+    Museum. Ich m\xF6chte Sie direkt mit Ihrer ersten Aufgabe bei uns betrauen: In
+    unseren Kellerr\xE4umen lagern skurrile Gegenst\xE4nde, die fr\xFCher in der
+    Zahnmedizin verwendet wurden. Ich w\xFCrde sie gerne in einer Sammlung ausstellen,
+    doch leider herrscht dort unten ein heilloses Durcheinander und das bereitet
+    mir seit l\xE4ngerem bereits Zahnschmerzen - Haha, verstehen Sie, Zahnschmerzen?
+    Nicht, naja gut, es kann ja nicht jeder Sinn f\xFCr Humor haben, hauptsache Sie
+    erledigen Ihre Arbeit. Gehen Sie doch also nun bitte in den Keller und stellen
+    eine kleine Sammlung f\xFCr mich zusammen. Eine Liste mit den ben\xF6tigten Gegenst\xE4nden
+    habe ich Ihnen unten bereits bereitlegen lassen, Sie werden diese wohl finden.
+    Viel Erfolg w\xFCnsche ich Ihnen und vielleicht sieht man sich ja wieder, hahahaa.."
 --- !u!222 &1163865307
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2562,8 +2570,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 33, y: -156.25}
-  m_SizeDelta: {x: 256, y: 54.5}
+  m_AnchoredPosition: {x: 33, y: -128.2}
+  m_SizeDelta: {x: 307.2, y: 155.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1368966258
 MonoBehaviour:
@@ -2795,7 +2803,7 @@ RectTransform:
   m_GameObject: {fileID: 1562537525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.95, y: 0.95, z: 1}
   m_Children: []
   m_Father: {fileID: 1368966257}
   m_RootOrder: 0
@@ -2837,7 +2845,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Das geht vermutlich anders. Oder naja, keine Ahnung eigentlich.
+  m_Text: "Apollonia: Hallo Reisender, ich bin Apollonia, die G\xF6ttin der Zahnheilkundigen
+    und habe dich hierher gebracht damit du mir meine Seele, meinen Orb zur\xFCck
+    bringst. Er ist mir k\xFCrzlich aus dem Schrein ausgeb\xFCchst und kann noch
+    nicht weit sein. Setze ihn wieder dort ein und ich lasse dich zur\xFCck in deine
+    Welt."
 --- !u!222 &1562537528
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -17,6 +17,5 @@ MonoBehaviour:
   consistsOf:
   - {fileID: 11400000, guid: 38e05bf3954812646bc9e3623d3274d8, type: 2}
   - {fileID: 11400000, guid: de6cf5f6e9b787d418921c52c376029d, type: 2}
-  - {fileID: 11400000, guid: a870ae24676a89b46b561e291e0aecc0, type: 2}
   title: Klemmbrett
   description: 

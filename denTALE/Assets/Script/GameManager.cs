@@ -353,7 +353,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    IEnumerator SwitchScenes(int toSceneIndex)
+    public IEnumerator SwitchScenes(int toSceneIndex)
     {
         transition.SetTrigger("Start");
         
