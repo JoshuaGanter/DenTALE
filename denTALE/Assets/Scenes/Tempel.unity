@@ -273,6 +273,7 @@ MonoBehaviour:
   transition: {fileID: 0}
   transitionDuration: 1
   DisplayInventory: {fileID: 0}
+  _hint: {fileID: 0}
 --- !u!4 &161973734
 Transform:
   m_ObjectHideFlags: 0
@@ -389,6 +390,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 8274873701517981592, guid: 3c8c4ba0dce6531499cfe1935c0dca88,
+        type: 3}
+      propertyPath: m_TagString
+      value: InteractableObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c8c4ba0dce6531499cfe1935c0dca88, type: 3}
 --- !u!4 &213420616 stripped
@@ -397,6 +403,39 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 213420615}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &213420617 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8274873701517981592, guid: 3c8c4ba0dce6531499cfe1935c0dca88,
+    type: 3}
+  m_PrefabInstance: {fileID: 213420615}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &213420618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213420617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce74fec5b730517409946b0434ebdb15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Tempel Lampe
+  Animator: {fileID: 483421716}
+--- !u!65 &213420619
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213420617}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.34764293, y: 0.34764287, z: 0.018883288}
+  m_Center: {x: -0.2759359, y: -0.000000036068634, z: 0.0050272862}
 --- !u!1001 &232072389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -905,6 +944,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 9f53d6d90a05f1e42ac138782e603e05,
+        type: 3}
+      propertyPath: m_TagString
+      value: Artifact
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f53d6d90a05f1e42ac138782e603e05, type: 3}
 --- !u!4 &483421714 stripped
@@ -953,6 +997,19 @@ MonoBehaviour:
   isCursed: 0
   toScene: 1
   Item: {fileID: 11400000, guid: c0ea9d234f8cbea418ee6cacf630f746, type: 2}
+--- !u!65 &483421718
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483421715}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 6, z: 6}
+  m_Center: {x: 0.000000834465, y: 0, z: 0}
 --- !u!1 &517494920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,6 +1154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InspectLight: {fileID: 0}
+  Background: {fileID: 0}
 --- !u!81 &517494926
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1537,6 +1595,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c60227cd2454c2944903cf040f533ba2,
+        type: 3}
+      propertyPath: m_TagString
+      value: InteractableObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c60227cd2454c2944903cf040f533ba2, type: 3}
 --- !u!4 &880428835 stripped
@@ -1545,6 +1608,38 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 880428834}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &880428836 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: c60227cd2454c2944903cf040f533ba2,
+    type: 3}
+  m_PrefabInstance: {fileID: 880428834}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &880428837
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880428836}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.055277247, y: 0.024156861, z: 0.13377751}
+  m_Center: {x: -0.00044397454, y: -0.007968298, z: -0.05457484}
+--- !u!114 &880428838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880428836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6ffbbf501823844cbf3ece0c285f7d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
 --- !u!1001 &887234275
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2309,7 +2404,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: d24a2985e0ba1d7478640f615537b1da,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -16.19
+      value: -16.79
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d24a2985e0ba1d7478640f615537b1da,
         type: 3}
@@ -2391,6 +2486,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d24a2985e0ba1d7478640f615537b1da,
+        type: 3}
+      propertyPath: m_TagString
+      value: Artifact
+      objectReference: {fileID: 0}
     - target: {fileID: 7199902334543741925, guid: d24a2985e0ba1d7478640f615537b1da,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2425,6 +2525,34 @@ MonoBehaviour:
   isCursed: 0
   toScene: 1
   Item: {fileID: 11400000, guid: 1abd825b6021fb043bf7bb9391acbef3, type: 2}
+--- !u!114 &1418684564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418684562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33c1948447ebca45b7f639e8383f134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCursed: 0
+  toScene: 0
+  Item: {fileID: 11400000, guid: 1abd825b6021fb043bf7bb9391acbef3, type: 2}
+--- !u!65 &1418684565
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418684562}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 54.13, y: 17.21, z: 14.74}
+  m_Center: {x: -16.532902, y: 0.15, z: -0.0000009854379}
 --- !u!1 &1460556551
 GameObject:
   m_ObjectHideFlags: 0
@@ -2878,6 +3006,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 66a9cefbefa6ce44f912bb0674b03536,
+        type: 3}
+      propertyPath: m_TagString
+      value: Artifact
+      objectReference: {fileID: 0}
     - target: {fileID: 636774027227280083, guid: 66a9cefbefa6ce44f912bb0674b03536,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2922,6 +3055,19 @@ MonoBehaviour:
   isCursed: 0
   toScene: 1
   Item: {fileID: 11400000, guid: 119de90c1117cd04c86202100d8c48ec, type: 2}
+--- !u!65 &1632347722
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632347720}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 36.4, y: 9.1, z: 20.43}
+  m_Center: {x: -12.16, y: 0, z: 4.440892e-16}
 --- !u!1001 &1734279445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3024,6 +3170,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a9f2a0c35d6ad89429b1643cd0c43236,
+        type: 3}
+      propertyPath: m_TagString
+      value: Artifact
+      objectReference: {fileID: 0}
     - target: {fileID: 214222990592898063, guid: a9f2a0c35d6ad89429b1643cd0c43236,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -3093,6 +3244,19 @@ MonoBehaviour:
   isCursed: 0
   toScene: 1
   Item: {fileID: 11400000, guid: 1ccc7eadeefbd6f4ab2ef8f4e5ab7d6a, type: 2}
+--- !u!65 &1734279449
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734279447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.08, y: 0.06, z: 1}
+  m_Center: {x: 0, y: 0, z: 0.4}
 --- !u!1 &1797485229
 GameObject:
   m_ObjectHideFlags: 0

@@ -229,6 +229,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 09924a19f78972a49976db22a812e6f1,
+        type: 3}
+      propertyPath: m_TagString
+      value: InteractableObject
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09924a19f78972a49976db22a812e6f1, type: 3}
 --- !u!4 &22389308 stripped
@@ -237,6 +242,40 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 22389307}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &22389309 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 09924a19f78972a49976db22a812e6f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 22389307}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &22389310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22389309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1bc97df225303e4080e270b435c68db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Gebiss
+  Cleaned: 0
+  Animator: {fileID: 1334226360}
+--- !u!65 &22389311
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22389309}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.18325886, y: 0.26, z: 0.1}
+  m_Center: {x: 0.013566281, y: -1.2501378e-10, z: 0}
 --- !u!1 &50559191
 GameObject:
   m_ObjectHideFlags: 0
@@ -5512,6 +5551,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d64245b803ba6fe42a1eff91636182b4,
+        type: 3}
+      propertyPath: m_TagString
+      value: InteractableObject
+      objectReference: {fileID: 0}
     - target: {fileID: -919159632108012870, guid: d64245b803ba6fe42a1eff91636182b4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5569,6 +5613,40 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 35f7df7ac024c404f8cf99acba52ee83, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d64245b803ba6fe42a1eff91636182b4, type: 3}
+--- !u!1 &437383129 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: d64245b803ba6fe42a1eff91636182b4,
+    type: 3}
+  m_PrefabInstance: {fileID: 437383128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &437383130
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437383129}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8, y: 8, z: 8}
+  m_Center: {x: 4.37, y: 0.97, z: -4.09}
+--- !u!114 &437383131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 437383129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da967586edc41ae41a8f44e4fa4e534b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Oven
+  IsExploded: 0
+  Animator: {fileID: 1823869733}
 --- !u!1 &443623411
 GameObject:
   m_ObjectHideFlags: 0
@@ -5924,6 +6002,50 @@ Transform:
   m_Father: {fileID: 1554549817}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &500627761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 500627762}
+  - component: {fileID: 500627763}
+  m_Layer: 0
+  m_Name: Wall3 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &500627762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500627761}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -72.96, y: 0, z: -40.49}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1372625955}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &500627763
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500627761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 84.19, y: 78.64, z: 4.3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &514549581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7838,6 +7960,7 @@ Transform:
   - {fileID: 1810894713}
   - {fileID: 1147462416}
   - {fileID: 2069843593}
+  - {fileID: 500627762}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8788,6 +8911,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c8880c596bf8ce44c9d325af83ba6f6e,
+        type: 3}
+      propertyPath: m_TagString
+      value: InteractableObject
+      objectReference: {fileID: 0}
     - target: {fileID: -405291836558447746, guid: c8880c596bf8ce44c9d325af83ba6f6e,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8875,6 +9003,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8880c596bf8ce44c9d325af83ba6f6e, type: 3}
+--- !u!1 &1640836134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: c8880c596bf8ce44c9d325af83ba6f6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1640836133}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1640836135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640836134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b7df2232029bad4f950ab1415c117fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: PraxisDoor
+  Ofen: {fileID: 437383129}
+  Gebiss: {fileID: 22389309}
+--- !u!65 &1640836136
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1640836134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.68, y: 2.6, z: 24.9}
+  m_Center: {x: 2.51, y: 2.5, z: -5.13}
 --- !u!4 &1685381545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 8103b6c02401ddd48b349af3f083ac63,
@@ -9546,7 +9708,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2069843592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -40.49}
+  m_LocalPosition: {x: 36.39, y: 0, z: -40.49}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1372625955}
