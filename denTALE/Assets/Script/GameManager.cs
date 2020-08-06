@@ -344,7 +344,7 @@ public class GameManager : MonoBehaviour
                 recipes.Add(components.ToArray(), item);
             }
             _allItems.Add(item);
-            _player.Inventory.AddItem(item);
+            //_player.Inventory.AddItem(item);
         }
     }
 
@@ -364,10 +364,10 @@ public class GameManager : MonoBehaviour
         
         setCurrentGameState(GameState.Adventure);
 
-        foreach (Item item in _player.Inventory)
+        /*foreach (Item item in _player.Inventory)
         {
             OnAddItemToInventory(item);
-        }
+        }*/
     }
 
     void OnGUI()
