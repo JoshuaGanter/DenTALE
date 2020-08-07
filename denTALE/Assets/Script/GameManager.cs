@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     public Item Target { get; private set; }
     public GameObject TargetObject { get; private set; }
     public static bool[] ScenesDone = new bool[]{ false, false };
+    public static bool[] HintsShown = new bool[]{ false, false, false };
     public GameObject Curator;
     private List<GameObject> _inspectObjects = new List<GameObject>();
     private List<Item> _inspectItems = new List<Item>();
