@@ -53,13 +53,4 @@ public class AccelerationManager : MonoBehaviour
             }
         }
     }
-
-    void OnGUI()
-    {
-        if (isShaking)
-        {
-            GUI.Label(new Rect(160, 10, 150, 100), "SHAKING!!");
-        }
-        GUI.Label(new Rect(320, 10, 150, 100), currentShakeLevel.ToString());
-    }
 }

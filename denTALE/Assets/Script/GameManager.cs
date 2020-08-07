@@ -246,8 +246,7 @@ public class GameManager : MonoBehaviour
     void OnShakeEnded()
     {
         _isShaking = false;
-        // TODO: play breaking sound
-
+        
         if (currentGameState == GameState.Inspect && Target.consistsOf.Length != 0)
         {
             _player.Inventory.RemoveItem(Target);
@@ -272,8 +271,6 @@ public class GameManager : MonoBehaviour
             {
                 OnItemDragged(newTarget[i]);
             }
-            
-            // TODO: play some kind of animation
         }
     }
 
@@ -345,13 +342,11 @@ public class GameManager : MonoBehaviour
                 recipes.Add(components.ToArray(), item);
             }
             _allItems.Add(item);
-            //_player.Inventory.AddItem(item);
         }
     }
 
     void Start()
     {
-        // Subscribe to events:
         CameraController.OnGameObjectClicked += OnGameObjectClicked;
         AccelerationManager.ShakeStarted += OnShakeStarted;
         AccelerationManager.ShakeEnded += OnShakeEnded;
@@ -364,17 +359,6 @@ public class GameManager : MonoBehaviour
         ClickPlane.OnRotateItemInInspector += OnRotateItemInInspector;
         
         setCurrentGameState(GameState.Adventure);
-
-        /*foreach (Item item in _player.Inventory)
-        {
-            OnAddItemToInventory(item);
-        }*/
-    }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect(500, 10, 150, 100), "Game State: " + currentGameState.ToString());
-        
     }
 
     public IEnumerator SwitchScenes(int toSceneIndex)
