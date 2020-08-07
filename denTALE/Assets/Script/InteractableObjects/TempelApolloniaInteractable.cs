@@ -13,13 +13,15 @@ public class TempelApolloniaInteractable : Interactable
     {
         if (item.title == "Waffe")
         {
+            GameManager.ScenesDone[1] = true;
             GameManager.Instance.ShowHint("Apollonia: Du elendiger Schänder, so mögen deine Zähne in deinem Mund faulen und du eines erbärmlichen Todes sterben, AHGHHH..");
-            GameManager.Instance.SwitchScenes((int) GameScene.Archiv);
+            StartCoroutine(GameManager.Instance.SwitchScenes((int) GameScene.Archiv));
         }
         else if (item.title == "Schreinsockel")
         {
+            GameManager.ScenesDone[1] = true;
             GameManager.Instance.ShowHint("Apollonia: Ich danke dir, Reisender. Gehe nun dorthin zurück, wo du herkamst.");
-            GameManager.Instance.SwitchScenes((int) GameScene.Archiv);
+            StartCoroutine(GameManager.Instance.SwitchScenes((int) GameScene.Archiv));
         }
     }
 }

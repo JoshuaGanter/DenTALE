@@ -710,7 +710,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.09201552, y: 0.0508, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0.02}
+  m_Center: {x: 0, y: 0, z: 0.01}
 --- !u!1001 &68671791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6742,7 +6742,7 @@ MonoBehaviour:
   transitionDuration: 1
   DisplayInventory: {fileID: 1091810544}
   _hint: {fileID: 1682814467}
-  Curator: {fileID: 0}
+  Curator: {fileID: 697320196}
 --- !u!4 &1009606580
 Transform:
   m_ObjectHideFlags: 0
