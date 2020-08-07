@@ -110,17 +110,20 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
         }
         ReorderInventory();
 
-        if (item.title == "Klemmbrett")
+        if (item.title == "Klemmbrett" && !GameManager.HintsShown[0])
         {
             GameManager.Instance.ShowHint("Irgendetwas scheint zwischen dem Brett und der Liste zu sein, ich sollte es auseinanderbauen und es mir genauer anschauen. Dazu muss ich das Inventar öffnen, das Klemmbrett antippen und dann kräftig schütteln..");
+            GameManager.HintsShown[0] = true;
         }
-        else if (item.title == "Stift")
+        else if (item.title == "Stift" && !GameManager.HintsShown[1])
         {
             GameManager.Instance.ShowHint("Ich sollte mir den wohl am besten direkt zusammen mit der List am Klemmbrett befestigen. Dazu muss ich eines dieser drei Dinge im Inventar antippen und dann die anderen beiden dazu legen..");
+            GameManager.HintsShown[1] = true;
         }
-        else if (item.title == "Archivraumschlüssel")
+        else if (item.title == "Archivraumschlüssel" && !GameManager.HintsShown[2])
         {
             GameManager.Instance.ShowHint("Ein alter Schlüssel, passt sicherlich zur Archivtür. Ich sollte ihn aus dem Inventar nehmen und in das Schloss stecken..");
+            GameManager.HintsShown[2] = true;
         }
     }
 
