@@ -109,6 +109,19 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
             NextButton.interactable = true;
         }
         ReorderInventory();
+
+        if (item.title == "Klemmbrett")
+        {
+            GameManager.Instance.ShowHint("Irgendetwas scheint zwischen dem Brett und der Liste zu sein, ich sollte es auseinanderbauen und es mir genauer anschauen. Dazu muss ich das Inventar öffnen, das Klemmbrett antippen und dann kräftig schütteln..");
+        }
+        else if (item.title == "Stift")
+        {
+            GameManager.Instance.ShowHint("Ich sollte mir den wohl am besten direkt zusammen mit der List am Klemmbrett befestigen. Dazu muss ich eines dieser drei Dinge im Inventar antippen und dann die anderen beiden dazu legen..");
+        }
+        else if (item.title == "Archivraumschlüssel")
+        {
+            GameManager.Instance.ShowHint("Ein alter Schlüssel, passt sicherlich zur Archivtür. Ich sollte ihn aus dem Inventar nehmen und in das Schloss stecken..");
+        }
     }
 
     private void OnItemRemovedFromInventory(Item item)

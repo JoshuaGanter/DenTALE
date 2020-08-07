@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public Item Target { get; private set; }
     public GameObject TargetObject { get; private set; }
-    public bool[] ScenesDone = new bool[]{ false, false };
+    public static bool[] ScenesDone = new bool[]{ false, false };
     public GameObject Curator;
     private List<GameObject> _inspectObjects = new List<GameObject>();
     private List<Item> _inspectItems = new List<Item>();
@@ -246,8 +246,7 @@ public class GameManager : MonoBehaviour
     void OnShakeEnded()
     {
         _isShaking = false;
-        // TODO: play breaking sound
-
+        
         if (currentGameState == GameState.Inspect && Target.consistsOf.Length != 0)
         {
             _player.Inventory.RemoveItem(Target);
@@ -272,8 +271,6 @@ public class GameManager : MonoBehaviour
             {
                 OnItemDragged(newTarget[i]);
             }
-            
-            // TODO: play some kind of animation
         }
     }
 
@@ -325,7 +322,8 @@ public class GameManager : MonoBehaviour
     {
         if (instance != null && instance != this)
         {
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
+            return;
         }
 
         instance = this;
@@ -344,13 +342,11 @@ public class GameManager : MonoBehaviour
                 recipes.Add(components.ToArray(), item);
             }
             _allItems.Add(item);
-            //_player.Inventory.AddItem(item);
         }
     }
 
     void Start()
     {
-        // Subscribe to events:
         CameraController.OnGameObjectClicked += OnGameObjectClicked;
         AccelerationManager.ShakeStarted += OnShakeStarted;
         AccelerationManager.ShakeEnded += OnShakeEnded;
@@ -363,34 +359,27 @@ public class GameManager : MonoBehaviour
         ClickPlane.OnRotateItemInInspector += OnRotateItemInInspector;
         
         setCurrentGameState(GameState.Adventure);
-
-        /*foreach (Item item in _player.Inventory)
-        {
-            OnAddItemToInventory(item);
-        }*/
-    }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect(500, 10, 150, 100), "Game State: " + currentGameState.ToString());
-        
     }
 
     public IEnumerator SwitchScenes(int toSceneIndex)
     {
         if (SceneManager.GetActiveScene().buildIndex == (int) GameScene.Archiv)
         {
-            _savedPlayedCoordinates = _player.transform.position;
+            _savedPlayedCoordinates = _player.transform.localPosition;
         }
-        else if (toSceneIndex == (int) GameScene.Archiv)
+        transition.SetTrigger("Start");
+        
+        yield return new WaitForSeconds(transitionDuration);
+        SceneManager.LoadScene(toSceneIndex);
+        if (toSceneIndex == (int) GameScene.Archiv)
         {
-            _player.transform.position = _savedPlayedCoordinates;
+            _player.transform.localPosition = _savedPlayedCoordinates;
             foreach (Item item in _player.Inventory)
             {
                 OnRemoveItemFromInventory(item);
             }
             _player.Inventory.Clear();
-            _player.Inventory.AddItem(GetItemByTitle("KlemmbrettMitStift"));
+            _player.Inventory.AddItem(GetItemByTitle("Klemmbrett mit Stift"));
             _player.Inventory.AddItem(GetItemByTitle("Archivraumschlüssel"));
             if (ScenesDone[0])
             {
@@ -408,47 +397,21 @@ public class GameManager : MonoBehaviour
             {
                 OnAddItemToInventory(item);
             }
-            if (SceneManager.GetActiveScene().buildIndex == (int) GameScene.Praxis)
+            if (ScenesDone[0] && ScenesDone[1])
             {
-                ScenesDone[0] = true;
-            }
-            else if (SceneManager.GetActiveScene().buildIndex == (int) GameScene.Tempel)
-            {
-                ScenesDone[1] = true;
+                Curator.GetComponentInChildren<Text>().text = "Oh, mein lieber Freund, Sie haben es ja tatsächlich geschafft alle Gegenstände, die ich Ihnen aufgeschrieben habe, zu sammeln. Damit sind Sie der erste und das will etwas heißen, ich habe diese Liste schon vielen Leuten zugemutet. Nun kann ich Ihnen ja auch die Wahrheit sagen: Ich selbst habe die Gegenstände verflucht um einen Nachfolger für die Leitung des Museums zu finden. Wie mir scheint ist das wohl nun geglückt und ich kann mich in meine wohlverdiente Rente zurückziehen, hahaha. Viel Spaß mit dem Museum, Herr Direktor! Hahaha!";
+                Curator.SetActive(true);
             }
         }
         else if (toSceneIndex == (int) GameScene.Praxis)
         {
-            _player.transform.position = new Vector3(5.0f, -12.0f, 11.5f);
+            _player.transform.localPosition = new Vector3(5.0f, -12.0f, 11.5f);
         }
         else if (toSceneIndex == (int) GameScene.Tempel)
         {
-            _player.transform.position = new Vector3(30.0f, -12.0f, -63.0f);
+            _player.transform.localPosition = new Vector3(30.0f, -12.0f, -63.0f);
         }
-        transition.SetTrigger("Start");
-        
-        yield return new WaitForSeconds(transitionDuration);
-        SceneManager.LoadScene(toSceneIndex);
-        foreach (GameObject gameObject in GameObject.FindGameObjectsWithTag("Artifact"))
-        {
-            Artifact artifact = gameObject.GetComponent<Artifact>();
-            if (artifact.isCursed)
-            {
-                if (artifact.toScene == GameScene.Praxis && ScenesDone[0])
-                {
-                    Destroy(gameObject);
-                }
-                if (artifact.toScene == GameScene.Tempel && ScenesDone[1])
-                {
-                    Destroy(gameObject);
-                }
-            }
-        }
-        if (ScenesDone[0] && ScenesDone[1])
-        {
-            Curator.GetComponentInChildren<Text>().text = "Oh, mein lieber Freund, Sie haben es ja tatsächlich geschafft alle Gegenstände, die ich Ihnen aufgeschrieben habe, zu sammeln. Damit sind Sie der erste und das will etwas heißen, ich habe diese Liste schon vielen Leuten zugemutet. Nun kann ich Ihnen ja auch die Wahrheit sagen: Ich selbst habe die Gegenstände verflucht um einen Nachfolger für die Leitung des Museums zu finden. Wie mir scheint ist das wohl nun geglückt und ich kann mich in meine wohlverdiente Rente zurückziehen, hahaha. Viel Spaß mit dem Museum, Herr Direktor! Hahaha!";
-            Curator.SetActive(true);
-        }
+
         transition.SetTrigger("Reset");
     }
 }
