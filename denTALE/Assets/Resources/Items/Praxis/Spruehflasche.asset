@@ -19,5 +19,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dcd7bb59282edd349b601c87df7d4d24, type: 2}
   - {fileID: 11400000, guid: b5e9c687251cfd54ebc5c6992bb77ed8, type: 2}
   title: "Spr\xFChflasche"
-  description: "Bietet die M\xF6glichkeit Mundsp\xFClung gro\xDFfl\xE4chig und gleichm\xE4\xDFig
-    zu verteilen."
+  description: 
+  PickedUp: 0

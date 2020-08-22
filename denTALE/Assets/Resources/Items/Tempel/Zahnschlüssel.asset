@@ -18,5 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ee28b1ceb94e236499cfbbbf14673893, type: 2}
   - {fileID: 11400000, guid: be15f356e0832ac47a9c89385a19ab62, type: 2}
   title: "Zahnschl\xFCssel"
-  description: "Ein, einem alten Schl\xFCssel \xE4hnelndes, Instrument, mit welchem
-    Z\xE4hne aus dem Kiefer eines Patienten \u201Cherausgehebelt\u201D wurden."
+  description: "Besteht aus einem Griff und einem d\xFCnnen Metallst\xFCck, welches
+    man mit etwas Kraft wohl in verschiedene Formen biegen k\xF6nnte."
+  PickedUp: 0

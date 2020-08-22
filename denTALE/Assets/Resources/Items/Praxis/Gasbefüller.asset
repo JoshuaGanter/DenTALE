@@ -19,5 +19,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 597164d0587036149a67e92d3a4f0363, type: 2}
   - {fileID: 11400000, guid: 8eec6d1a19c26c643b473a2c885794f8, type: 2}
   title: "Gasbef\xFCller"
-  description: Eine Apparatur, mit der Gas aus einer Kartusche gezielt abgegeben
-    werden kann.
+  description: 
+  PickedUp: 0

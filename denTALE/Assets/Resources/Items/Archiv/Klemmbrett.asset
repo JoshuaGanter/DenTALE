@@ -19,4 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: de6cf5f6e9b787d418921c52c376029d, type: 2}
   - {fileID: 11400000, guid: 998b1d4e9620bc24fa7c85da045065f7, type: 2}
   title: Klemmbrett
-  description: 
+  description: "Irgendetwas scheint zwischen dem Brett und der Liste zu sein, ich
+    sollte es auseinanderbauen und mir genauer anschauen. Dazu muss ich links das
+    Inventar \xF6ffnen, das Klemmbrett antippen und dann kr\xE4ftig sch\xFCtteln..."
+  PickedUp: 0

@@ -18,5 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a1c2d557888e614c99092fb77cf8bea, type: 2}
   - {fileID: 11400000, guid: 903055e06ef317544aa5479193ae86ee, type: 2}
   title: Gusspresse
-  description: "Eine Presse, in der unter Hitzeeinwirkung Abdr\xFCcke/Modeele von
-    Gebissen hergestellt werden konnten."
+  description: In diesem alten Werkzeug scheint die Seele der Statue gewesen zu sein,
+    ich sollte es so anpassen, dass die Seele wenn ich sie gefunden habe nicht wieder
+    entkommen kann.
+  PickedUp: 0

@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: bf68b130828e4ea42969c411d90f348e, type: 3}
   consistsOf: []
   title: "Schl\xFCsselspange"
-  description: "Das vordere Teil des Zahnschl\xFCssels, bestehend aus einem langen
-    d\xFCnnen Metallst\xFCck mit einem gebogenen Ansatz am Ende."
+  description: 
+  PickedUp: 0

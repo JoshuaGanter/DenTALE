@@ -18,5 +18,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 73b4258fa0284264494017cf84b59d25, type: 2}
   - {fileID: 11400000, guid: 6620b59e972b2f947bb5e803890b2694, type: 2}
   title: Mundhammer
-  description: "Ein kleiner Hammer der beim Z\xE4hne entfernen zur Hilfe genommen
-    wurde."
+  description: Ein stabiler, kleiner Hammer - eignet sich super um Dinge zu zerschlagen.
+  PickedUp: 0

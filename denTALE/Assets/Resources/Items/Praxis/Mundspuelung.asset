@@ -16,4 +16,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 3513dbfeec3767243bbaed1bd0a19bfa, type: 3}
   consistsOf: []
   title: "Mundsp\xFClung"
-  description: "Eine alte Flasche Mundsp\xFClung mit etwas Restinhalt."
+  description: In der Flasche ist nicht mehr viel Inhalt, aber damit kann man sicherlich
+    gut Dinge reinigen...
+  PickedUp: 0

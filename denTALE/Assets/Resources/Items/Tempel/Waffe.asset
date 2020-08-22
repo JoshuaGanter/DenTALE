@@ -19,4 +19,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: be15f356e0832ac47a9c89385a19ab62, type: 2}
   - {fileID: 11400000, guid: 9beda30f05cef024d84bf6bdc5b0a7ca, type: 2}
   title: Waffe
-  description: "Eine Art Dolch mit gef\xE4hrlicher Spitze."
+  description: 
+  PickedUp: 0

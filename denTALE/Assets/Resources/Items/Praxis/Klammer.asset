@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: a32319a8aa21b5d45a81b4c2b054bf15, type: 3}
   consistsOf: []
   title: Klammer
-  description: "Ein langes, gebugenes und d\xFCnnes Metallst\xFCck, welches wohl
-    zum befestigen oder als Hebel beim Einsatz des Pelikans verwerndet wurde."
+  description: 
+  PickedUp: 0

@@ -16,4 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 13999c67d3eee2c40bdcb076613bc389, type: 3}
   consistsOf: []
   title: Rohr
-  description: "Ein dickes Rohr, welches den Hauptk\xF6rper der Pumpe darstellt."
+  description: 
+  PickedUp: 0

@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: cdd35fc8e66d2274f8f1badc49ebca39, type: 3}
   consistsOf: []
   title: Gaskartusche
-  description: "Eine Gaskartusche, wie man sie heutzutage aus der heimischen Zapfanlage
-    kennt, hier eingesetzt um die F\xFCllung herauszupressen."
+  description: 
+  PickedUp: 0
