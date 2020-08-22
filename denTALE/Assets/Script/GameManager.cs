@@ -298,7 +298,7 @@ public class GameManager : MonoBehaviour
     {
         _hint.GetComponentInChildren<Text>().text = message;
         _hint.SetActive(true);
-        StartCoroutine(CloseHint(5));
+        StartCoroutine(CloseHint(7));
     }
 
     private IEnumerator CloseHint(int waitForSeconds)
@@ -336,6 +336,7 @@ public class GameManager : MonoBehaviour
         recipes = new Dictionary<Item[], Item>(new RecipeComparer());
         foreach (Item item in Resources.LoadAll<Item>("Items"))
         {
+            item.PickedUp = false;
             if (item.consistsOf.Length > 0)
             {
                 List<Item> components = new List<Item>(item.consistsOf);

@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 706b7934d75a0734d80b454694e8813d, type: 3}
   consistsOf: []
   title: Offene Kugel
-  description: "Das kugelf\xF6rmige Oberteil der Presse, in welchen das Material
-    eingef\xFCllt und erhitzt wurde."
+  description: 
+  PickedUp: 0

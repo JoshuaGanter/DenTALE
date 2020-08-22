@@ -16,5 +16,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: ed671ffce9623f54a977b705315b1b6a, type: 3}
   consistsOf: []
   title: Apollonias Orb
-  description: Eine kleine leuchtende und fliegende Kugel, welche die Seele der Apollonia
-    Statue im Tempel darstellt.
+  description: Ich habe den Geist der Statue gefangen, jetzt muss ich ihn nur so
+    in der Schreinkugel einsperren, dass er nicht mehr rauskommt.
+  PickedUp: 0

@@ -11,6 +11,7 @@ public class Item : ScriptableObject
     public string title = "";
     [TextArea(15, 20)]
     public string description;
+    public bool PickedUp = false;
 
     public override bool Equals(object other)
     {

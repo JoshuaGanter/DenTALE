@@ -16,4 +16,6 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 826da84f5bfe95b45955e3f9fafafb0e, type: 3}
   consistsOf: []
   title: "Archivraumschl\xFCssel"
-  description: 
+  description: "Ein alter Schl\xFCssel, passt sicherlich zur Archivt\xFCr. Ich sollte
+    ihn aus dem Inventar nehmen und in das Schloss stecken..."
+  PickedUp: 0

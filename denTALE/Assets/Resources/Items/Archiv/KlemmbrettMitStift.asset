@@ -19,4 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 38e05bf3954812646bc9e3623d3274d8, type: 2}
   - {fileID: 11400000, guid: de6cf5f6e9b787d418921c52c376029d, type: 2}
   title: Klemmbrett mit Stift
-  description: 
+  description: "Hier kann ich mir ansehen welche Gegenst\xE4nde ich noch brauche
+    und mir die gefundenen direkt abhaken."
+  PickedUp: 0

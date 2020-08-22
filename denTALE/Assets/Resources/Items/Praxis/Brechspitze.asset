@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 237c4d448b45cb34797f76268eecbd7c, type: 3}
   consistsOf: []
   title: Brechspitze
-  description: "Ein solides und flaches St\xFCck Metall, das am unteren Ende einer
-    zackigen Schneide \xE4hnelt."
+  description: 
+  PickedUp: 0

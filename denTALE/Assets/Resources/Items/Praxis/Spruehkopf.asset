@@ -16,5 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: b80037a0073f05c40a60bfdc63d078f2, type: 3}
   consistsOf: []
   title: "Spr\xFChkopf"
-  description: "Ein d\xFCnner Aufsatz, mit dem die F\xFCllung in den Zahn gebracht
-    wurde."
+  description: 
+  PickedUp: 0

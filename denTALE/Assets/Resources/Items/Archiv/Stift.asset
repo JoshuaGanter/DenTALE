@@ -16,4 +16,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 856337ed51cf50d4fa135704247ffbd6, type: 3}
   consistsOf: []
   title: Stift
-  description: 
+  description: Ich sollte mir den wohl am besten direkt zusammen mit der Liste am
+    Klemmbrett befestigen. Dazu muss ich eines dieser drei Dinge im Inventar antippen
+    und dann die anderen beiden dazu legen...
+  PickedUp: 0

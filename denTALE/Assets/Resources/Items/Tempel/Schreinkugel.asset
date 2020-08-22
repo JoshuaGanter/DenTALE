@@ -19,4 +19,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a1c2d557888e614c99092fb77cf8bea, type: 2}
   - {fileID: 11400000, guid: be15f356e0832ac47a9c89385a19ab62, type: 2}
   title: Schreinkugel
-  description: Das Oberteil des Schreinsockels mit dem eingesetzten Orb.
+  description: 
+  PickedUp: 0

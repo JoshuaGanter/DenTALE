@@ -18,4 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8eec6d1a19c26c643b473a2c885794f8, type: 2}
   - {fileID: 11400000, guid: b5e9c687251cfd54ebc5c6992bb77ed8, type: 2}
   title: Pumpe
-  description: Eine alte Pumpe.
+  description: "Diese Pumpe besteht unter anderem aus einer Art Flasche, die man
+    als Beh\xE4lter f\xFCr Fl\xFCssigkeiten nutzen k\xF6nnte, und einer Art Ventil,
+    um den Druck zu regulieren."
+  PickedUp: 0

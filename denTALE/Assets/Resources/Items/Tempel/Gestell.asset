@@ -16,4 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: bb86958810ac1da479d4669b4a90344c, type: 3}
   consistsOf: []
   title: Gestell
-  description: Die Aufnahme der Presse
+  description: 
+  PickedUp: 0

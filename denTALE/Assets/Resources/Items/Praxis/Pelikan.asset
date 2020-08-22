@@ -19,5 +19,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 94a3795b2f125d34ca0518f20d3547cc, type: 2}
   - {fileID: 11400000, guid: 8dde768618ce206418b66c4430c83af3, type: 2}
   title: Pelikan
-  description: "Ein robustes Brechwerkzeug, das zum Entfernen von Z\xE4hnen genutzt
-    wurde."
+  description: "Ein stabiles Werkzeug mit dem bestimmt einmal Z\xE4hne entfernt wurden.
+    Das untere Ende ist ganz sch\xF6n scharf."
+  PickedUp: 0

@@ -16,4 +16,5 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: a5aa1ae3da946ae469fc87b8f1f67742, type: 3}
   consistsOf: []
   title: Hammerstiel
-  description: Der Stiel des kleinen Hammers.
+  description: 
+  PickedUp: 0
