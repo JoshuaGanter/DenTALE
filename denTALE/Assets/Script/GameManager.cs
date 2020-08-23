@@ -232,6 +232,8 @@ public class GameManager : MonoBehaviour
             _inspectItems.RemoveAt(index);
             RearrangeInspectItems();
             CheckIfRecipeIsCraftable();
+            Target = _inspectItems[0];
+            TargetObject = _inspectObjects[0];
         }
         else if (gameObj.tag == "InteractableObject")
         {
@@ -248,7 +250,7 @@ public class GameManager : MonoBehaviour
     {
         _isShaking = false;
         
-        if (currentGameState == GameState.Inspect && Target.consistsOf.Length != 0)
+        if (currentGameState == GameState.Inspect && _inspectObjects.Count == 1 && Target.consistsOf.Length != 0)
         {
             _player.Inventory.RemoveItem(Target);
             _player.Inventory.AddItems(Target.consistsOf);

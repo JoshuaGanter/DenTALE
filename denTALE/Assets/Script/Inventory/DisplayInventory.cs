@@ -68,15 +68,6 @@ public class DisplayInventory : MonoBehaviour, IPointerClickHandler, IDragHandle
             CraftButton.gameObject.SetActive(false);
             CraftCloseButton.gameObject.SetActive(false);
         }
-
-        if (newState == GameState.Adventure)
-        {
-            MenuButton.gameObject.SetActive(true);
-        }
-        else
-        {
-            MenuButton.gameObject.SetActive(false);
-        }
     }
 
     public void EnableCrafting(bool enabled)
